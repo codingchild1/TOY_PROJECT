@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
+
+    <!--@Autowired, @Resource, @PostConstructor, @PreDestroy 등의 어노테이션을 감지해서 적절한 작업을 수행하는 객체들을 스프링 컨테이너에 등록시킨다.-->
+    <context:annotation-config />
+    <context:component-scan base-package="com" />
+
+    <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/sw_toy" />
+        <property name="username" value="postgres" />
+        <property name="password" value="qwer1234" />
+    </bean>
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:/mybatis/mybatis-config.xml" />
+        <property name="mapperLocations" value="classpath:/mybatis/mapper/*.xml" />
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+    </bean>
+
+    <!--@Mapper 어노테이션이 부착된 mappers 인터페이스를 전부 스캔해서 mappers 인스턴스(mappers 인터페이스를 구현한 객체)를 생성하고 스프링 컨테이너에 등록시키기-->
+    <mybatis-spring:scan base-package="com.dao" factory-ref="sqlSessionFactory" />
+
+</beans>

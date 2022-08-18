@@ -1,0 +1,222 @@
+@font-face {
+    font-family: 'MYYeongnamnu';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/MYYeongnamnu.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    margin: 0;
+}
+
+a {
+    color: #4fc31f;
+    text-decoration: none;
+}
+
+a:hover {
+    color: blueviolet;
+    text-decoration: none;
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    list-style: none;
+    height: 100px;
+    background: #F8F8FF;
+    box-shadow: 2px -2px 5px 0px black;
+    font-family: 'MYYeongnamnu';
+}
+
+.sidenav {
+    background-color: #F5F5F5;
+    list-style: none;
+    margin: 100px 0 80px 50px;
+    width: 180px;
+    height: 1000px;
+}
+
+.sideitem {
+    margin-bottom: -10px;
+    margin-left: -20px;
+    padding-top: 20px;
+}
+
+.date {
+    color: deepskyblue;
+    font-size: 18px;
+}
+
+.item {
+    margin-bottom: -10px;
+    margin-left: -20px;
+}
+
+.menu {
+    font-size: 20px;
+    color: #4fc31f;
+    margin: 30px;
+}
+
+.accdetail {
+    top: 200px;
+    left: 250px;
+    /* width: auto; */
+    /* height: auto; */
+    position: absolute;
+}
+
+.acctable {
+    width: 1600px;
+    border-collapse: collapse;
+}
+
+.total {
+    font-family: 'MYYeongnamnu';
+}
+
+.tr-first {
+    text-align: left;
+    border: 1px solid antiquewhite;
+    border-left: none;
+    border-right: none;
+    height: 40px;
+    font-size: 18px;
+    background: azure;
+    font-family: 'MYYeongnamnu';
+}
+
+.tr-second-1 {
+    text-align: left;
+    border: 1px solid antiquewhite;
+    border-left: none;
+    border-right: none;
+    height: 30px;
+    font-size: 15px;
+}
+
+.tr-second-2 {
+    text-align: left;
+    border: 1px solid antiquewhite;
+    border-left: none;
+    border-right: none;
+    height: 30px;
+    font-size: 15px;
+    background: azure;
+}
+
+#createacc {
+    position: absolute;
+    left: 1550px;
+    top: 28px;
+    width: 50px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid silver;
+    background: lightgreen;
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/*여기부터 글쓰기 모달*/
+.modal {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 460px;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.27), 0 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+#jsCloseBtn {
+    background-color: deepskyblue;
+    border: none;
+    position: absolute;
+    top: 420px;
+    height: 40px;
+    width: 60px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'MYYeongnamnu';
+    font-size: 19px;
+    color: white;
+    cursor: pointer;
+    margin-left: 70px;
+}
+#jsinsertBtn {
+    background-color: whitesmoke;
+    border: none;
+    position: absolute;
+    top: 420px;
+    height: 40px;
+    width: 60px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'MYYeongnamnu';
+    font-size: 19px;
+    color: black;
+    cursor: pointer;
+}
+#modal_btns {
+    margin-left: 185px;
+}
+.hidden {
+    display: none;
+}
+.modal_inputbox {
+    width: 330px;
+    height: 40px;
+    margin: 20px 0px 0px 0px;
+    border-radius: 8px;
+    border: 1px solid powderblue;
+}
+#modal_inputboxid {
+    text-align: center;
+    margin-top: 100px;
+    margin-left: 40px;
+}
+.modal_list {
+    list-style: none;
+    font-size: 18px;
+    font-family: 'MYYeongnamnu';
+    position: absolute;
+    top: 108px;
+    color: hotpink;
+}
+.input_list {
+    margin-top: 39px;
+}
+.modal_title {
+    position: absolute;
+    line-height: 4;
+    font-size: 25px;
+    margin-left: 215px;
+    color: limegreen;
+    font-family: 'MYYeongnamnu';
+}
+#dateBox {
+    width: 48px;
+}
+.modify-btn {
+    margin-left: 70px;
+    color: red;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'MYYeongnamnu';
+    font-size: 18px;
+}
+.delete-btn {
+    color: purple;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: 'MYYeongnamnu';
+    font-size: 18px;
+}

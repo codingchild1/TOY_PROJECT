@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.AccountDAO">
+
+    <resultMap id="accountVO" type="com.vo.AccountVO">
+        <result property="accDate" column="acc_date"/>
+        <result property="category" column="category"/>
+        <result property="content" column="content"/>
+        <result property="amount" column="amount"/>
+        <result property="allAmount" column="all_amount"/>
+        <result property="accNo" column="acc_no"/>
+        <result property="accDelete" column="acc_delete"/>
+    </resultMap>
+
+    <select id="getlist" resultMap="accountVO" parameterType="com.vo.DateVO">
+        SELECT ACC_DATE,
+        CATEGORY,
+        CONTENT,
+        AMOUNT,
+        ACC_NO
+        FROM SW_ACCOUNT
+        WHERE ACC_DATE LIKE
+        #{year}
+        <if test="month != null and month !=''">
+            || '-' || #{month}
+        </if>
+        <if test="date != null and date != ''">
+            || '-' || #{date}
+        </if>
+        || '%'
+        AND ACC_DELETE = FALSE
+        ORDER BY ACC_DATE DESC
+    </select>
+
+    <!--<select id="selecttotal" resultType="com.vo.AccountVO">-->
+    <!--SELECT ALL_AMOUNT-->
+    <!--FROM (SELECT SUM(AMOUNT) OVER (ORDER BY ACC_NO) AS ALL_AMOUNT-->
+    <!--, RANK() OVER (ORDER BY ACC_NO DESC) AS RANK-->
+    <!--FROM SW_ACCOUNT) AS A-->
+    <!--WHERE A.RANK = 1;-->
+    <!--</select>-->
+
+    <insert id="insertaccount" parameterType="com.vo.AccountVO">
+        <!--<selectKey keyProperty="accNo" resultType="java.lang.Long" order="BEFORE">-->
+        <!--SELECT COALESCE(MAX(SORT_ORDR),0)+1 AS ACC_NO FROM SW_ACCOUNT-->
+        <!--</selectKey>-->
+        INSERT INTO SW_ACCOUNT(
+        ACC_DATE, CATEGORY, CONTENT, AMOUNT)
+        VALUES (#{accDate}, #{category}, #{content}, #{amount})
+    </insert>
+
+    <update id="updateAccount" parameterType="com.vo.AccountVO">
+        UPDATE sw_account
+        SET  ACC_DATE = #{accDate}
+        , CATEGORY = #{category}
+        , CONTENT = #{content}
+        , AMOUNT = #{amount}
+        WHERE acc_no = #{accNo}
+    </update>
+
+    <select id="selectAccountByAccNo" resultMap="accountVO">
+        SELECT ACC_DATE,
+               CATEGORY,
+               CONTENT,
+               AMOUNT,
+               ACC_NO,
+               ACC_DELETE
+        FROM SW_ACCOUNT
+        WHERE ACC_NO = #{ACCNO}
+    </select>
+
+    <select id="deleteAccList" parameterType="com.vo.AccountVO">
+        update sw_account
+        set acc_delete = true
+        where acc_no = #{accNo}
+    </select>
+
+</mapper>
