@@ -86,6 +86,7 @@
                 <option value="식비">식비</option>
                 <option value="건강">건강</option>
                 <option value="놀이">놀이</option>
+                <option value="쇼핑">쇼핑</option>
                 <option value="기타">기타</option>
             </select>
             <input type="text" id="modal_content" class="modal_inputbox"/>
@@ -114,12 +115,23 @@
             <th>Date</th>
             <th>Category</th>
             <th>Content</th>
-            <th>Amount</th>
+            <th>Amount (원)</th>
             <th>누적 (원)</th>
         </tr>
         </thead>
 
         <%--가계부 본문--%>
+        <tbody>
+        </tbody>
+    </table>
+    <table class="category_Amount">
+        <colgroup>
+            <col width="20%" style="background: red;">
+            <col width="20%" style="background: skyblue;">
+            <col width="20%" style="background: green;">
+            <col width="20%" style="background: yellow;">
+            <col width="20%" style="background: gray;">
+        </colgroup>
         <tbody>
         </tbody>
     </table>
@@ -149,7 +161,6 @@
 
         // 삭제버튼
         $(document).on('click', ".delete-btn", function () {
-            debugger
             let accNo = $(this).attr('data-no');
             deleteList(accNo);
         })
@@ -312,29 +323,64 @@
             data: today,
             success: function (returnData, textStatus) {
                 str = "";
+                strCate = "";
                 let allAmount = 0;
+                let foodAmount = 0;
+                let healthAmount = 0;
+                let playAmount = 0;
+                let shoppingAmount = 0;
+                let etcAmount = 0;
                 for (const i of returnData) {
                     allAmount += i.amount;
+
+                    switch (i.category) {
+                        case '식비':
+                            foodAmount += i.amount;
+                            break;
+                        case '건강':
+                            healthAmount += i.amount;
+                            break;
+                        case '놀이':
+                            playAmount += i.amount;
+                            break;
+                        case '쇼핑':
+                            shoppingAmount += i.amount;
+                            break;
+                        case '기타':
+                            etcAmount += i.amount;
+                            break;
+                    }
                 }
                 $(".total").text("Total:" + allAmount + "원");
                 for (const i of returnData) {
-                    str += "<tr class=tr-second-1>"
+                    str += "<tr class=tr-second-1>";
                     str += "<td class=notice-data>" + i.accDate + "</td>";
                     str += "<td class=notice-category>" + i.category + "</td>";
                     str += "<td class=notice-content>" + i.content + "</td>";
                     str += "<td class=notice-amount>";
-                    str += "<span class=notice-label>" + i.amount + "</span>"
+                    str += "<span class=notice-label>" + i.amount.format()+ "</span>";
                     str += "</td>";
                     str += "<td class=noticce-total>";
-                    str += "<span class=notice-file-icon>" + allAmount + "</span>"
+                    str += "<span class=notice-file-icon>" + allAmount.format() + "</span>";
                     allAmount -= i.amount;
-                    str += "<button class='open modify-btn' data-no='" + i.accNo + "'>" + "수정" + "</button>"    //data-no=''
-                    str += "<button class='delete-btn' id='delete-btn' data-no='" + i.accNo + "'>" + "삭제" + "</button>"
+                    str += "<button class='open modify-btn' data-no='" + i.accNo + "'>" + "수정" + "</button>";    //data-no=''
+                    str += "<button class='delete-btn' id='delete-btn' data-no='" + i.accNo + "'>" + "삭제" + "</button>";
                     str += "</td>"
                     str += "</tr>"
                 }
+                // 카테고리 별 금액
+                strCate += "<tr>";
+                strCate += "<th>" + "식비: " + foodAmount.format() + " 원" + "</th>";
+                strCate += "<th>" + "건강: " + healthAmount.format() + " 원" + "</th>";
+                strCate += "<th>" + "쇼핑: " + playAmount.format() + " 원" + "</th>";
+                strCate += "<th>" + "놀이: " + shoppingAmount.format() + " 원" + "</th>";
+                strCate += "<th>" + "기타: " + etcAmount.format() + " 원" + "</th>";
+                strCate += "</tr>";
+
                 $(".acctable tbody").empty();   //초기화
                 $(".acctable tbody").append(str);   //요소추가
+                $(".category_Amount tbody").empty();
+                $(".category_Amount tbody").append(strCate);    // 카테고리별 요소 추가
             },
             error: function (returnData, textStatus) {
                 alert('실패');
@@ -350,6 +396,18 @@
         $("#modal_content").val('');
         $("#modal_amount").val('');
         $("#accNo").val('');
+    }
+
+    // format() 함수 추가
+    Number.prototype.format = function () {
+        if (this==0) return 0;
+
+        let reg = /(^[+-]?\d+)(\d{3})/;
+        let num = (this + '');
+
+        while (reg.test(num)) num = num.replace(reg, '$1' + ',' + '$2');
+
+        return num;
     }
 
 </script>
