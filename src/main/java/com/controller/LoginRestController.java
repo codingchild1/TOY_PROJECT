@@ -14,7 +14,7 @@ public class LoginRestController {
     SubPageSerivce subPageSerivce;
 
     @RequestMapping("memidoverlap")
-    public String memidoverlap(@RequestParam("valud=mberId")String mberId) throws Exception{
+    public String memidoverlap(@RequestParam("valud=mberId") String mberId) throws Exception{
         boolean overlap=false;
         try {
             overlap = subPageSerivce.memoverlap(mberId);
