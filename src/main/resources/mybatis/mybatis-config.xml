@@ -20,5 +20,6 @@
     </settings>
     <typeAliases>
         <typeAlias type="com.vo.AccountVO" alias="AccountVO"></typeAlias>
+        <typeAlias type="com.vo.MberVO" alias="MberVO"></typeAlias>
     </typeAliases>
 </configuration>

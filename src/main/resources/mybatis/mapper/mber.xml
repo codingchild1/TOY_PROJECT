@@ -22,7 +22,7 @@
     </insert>
 
     <select id="memoverlap" parameterType="string" resultType="com.vo.MberVO">
-        select * from sw_mber where mber_id=#{id}
+        select * from sw_mber where mber_id=#{mberId}
     </select>
 
 </mapper>
