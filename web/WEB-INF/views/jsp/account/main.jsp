@@ -3,47 +3,8 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <jsp:useBean id="now" class="java.util.Date"/>
-<html>
-<head>
-    <title>마이 가계부</title>
-    <link rel="stylesheet" href="/resources/css/main.css">
-</head>
+<jsp:include page="/WEB-INF/views/jsp/header/navibar.jsp"/>
 <body>
-<%--헤더--%>
-<nav class="nav">
-    <li class="item">
-        <ul>
-            <div class="menu"><a href="#">Home</a></div>
-        </ul>
-    </li>
-    <li class="item">
-        <ul>
-            <div class="menu"><a href="#">Diary</a></div>
-        </ul>
-    </li>
-    <li class="item">
-        <ul>
-            <div class="menu"><a href="#">account</a></div>
-        </ul>
-    </li>
-    <li class="item">
-        <ul>
-            <div class="menu"><a href="#">미구현1</a></div>
-        </ul>
-    </li>
-    <li class="item">
-        <ul>
-            <div class="menu"><a href="#">미구현2</a></div>
-        </ul>
-    </li>
-    <li class="item">
-        <ul>
-            <div class="menu"><a href="#">미구현3</a></div>
-        </ul>
-    </li>
-</nav>
-<%--헤더 끝--%>
-
 <%--사이드바--%>
 <nav class="sidenav">
     <div>
