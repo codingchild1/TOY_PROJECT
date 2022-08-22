@@ -97,6 +97,7 @@
     });
 
     $('#memidoverlap').click(function(){
+        debugger
         let mberId=$('#mberId').val();
         if(mberId==''){
             alert("아이디를 입력하세요.");
@@ -109,7 +110,7 @@
             dataType:"text",
             url:"/rest/memidoverlap",
             data:{
-                mberId:$('#mberId').val()
+                mberId : $('#mberId').val()
             },
             success: function(data, textStatus){
                 if(data=="true"){
