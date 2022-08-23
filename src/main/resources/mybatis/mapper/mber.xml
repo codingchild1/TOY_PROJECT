@@ -2,27 +2,41 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.SubPageDAO">
 
-    <!--<resultMap id="mberjoin" type="com.vo.MberVO">-->
-        <!--<result property="mberId" column="mber_id"/>-->
-        <!--<result property="password" column="password"/>-->
-        <!--<result property="mberNm" column="mber_nm"/>-->
-        <!--<result property="email" column="email"/>-->
-        <!--<result property="phoneNum" column="phone_num"/>-->
-        <!--<result property="address" column="address"/>-->
-        <!--<result property="addressDetail" column="address_detail"/>-->
-        <!--<result property="mberType" column="mber_type"/>-->
-        <!--<result property="mberState" column="mber_state"/>-->
-        <!--<result property="esntlId" column="esntl_id"/>-->
-    <!--</resultMap>-->
+    <resultMap id="mberjoin" type="com.vo.MberVO">
+        <result property="password" column="password"/>
+        <result property="mberNm" column="mber_nm"/>
+        <result property="email" column="email"/>
+        <result property="phoneNum" column="phone_num"/>
+        <result property="mberType" column="mber_type"/>
+        <result property="mberState" column="mber_state"/>
+        <result property="esntlId" column="esntl_id"/>
+        <result property="mberId" column="mber_id"/>
+    </resultMap>
 
     <insert id="mberjoin" parameterType="com.vo.MberVO">
         INSERT INTO SW_MBER(
 	PASSWORD, MBER_NM, EMAIL, PHONE_NUM, MBER_ID)
-	VALUES (#{password}, #{mbernm}, #{email}, #{phonenum}, #mberid);
+	VALUES (#{password}, #{mberNm}, #{email}, #{phoneNum}, #{mberId});
     </insert>
 
     <select id="memoverlap" parameterType="string" resultType="com.vo.MberVO">
-        select * from sw_mber where mber_id=#{mberId}
+        select *
+        from sw_mber
+        where mber_id=#{mberId}
+    </select>
+
+    <select id="permitMber" parameterType="com.vo.MberVO" resultMap="mberjoin">
+        select password
+        , mber_nm
+        , email
+        , phone_num
+        , mber_type
+        , mber_state
+        , esntl_id
+        , mber_id
+        from sw_mber
+        where mber_id = #{mberId}
+        and password = #{password}
     </select>
 
 </mapper>

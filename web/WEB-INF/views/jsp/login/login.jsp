@@ -11,10 +11,10 @@
     <title>Title</title>
     <link rel="stylesheet" href="/resources/css/login.css">
 </head>
-<jsp:include page="/WEB-INF/views/jsp/header/navibar.jsp"/>
 <body>
+<jsp:include page="/WEB-INF/views/jsp/header/navibar.jsp"/>
 <section style="min-height: 700px; padding-top: 80px;">
-    <form id="login" action="login" method="post">
+    <form id="login" action="login.do" method="post">
         <div style="width: 100%;max-width: 1500px;margin: 0 auto;padding: 0 20px;">
             <div style="max-width: 800px;margin: 70px auto 0;width: 100%;box-shadow: 0 0 30px 0 rgb(0 0 0 / 7%);">
                 <div style="display: flex;">
@@ -24,7 +24,7 @@
                     <div class="signup" style="width: 45%;max-width: 380px;margin: 0 auto;padding: 30px 10px;">
                         <h3 style="font-size: 24px;text-align: center;margin-bottom: 10px;">Log In</h3>
                         <div class="formbox" style="width: 93%;margin: 0 auto;display: flex; flex-direction: column;">
-                            <input type="text" style="border: solid 1px #ddd;padding: 5px; font-size: 13px;line-height: 20px;margin-bottom: 10px;" placeholder="Id" id="id" name="id">
+                            <input type="text" style="border: solid 1px #ddd;padding: 5px; font-size: 13px;line-height: 20px;margin-bottom: 10px;" placeholder="Id" id="mberId" name="mberId">
                             <input type="password" style="border: solid 1px #ddd;padding: 5px; font-size: 13px;line-height: 20px;margin-bottom: 10px;" placeholder="Password" id="password" name="password">
                             <button id="submit" style="background: #222222; color: #fff;font-weight: bold;padding: 10px;margin: 10px 0px 20px;text-align: center;cursor: pointer; user-select: none;border: none;height: 41px;">
                                 Log In
@@ -51,10 +51,10 @@
 <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
 <script>
     $('#login').submit(function(){
-        let id=$('#id').val();
-        if(id==''){
+        let mberId=$('#mberId').val();
+        if(mberId==''){
             alert("아이디를 입력하세요.");
-            $('#id').focus();
+            $('#mberId').focus();
             return false;
         }
         let password=$('#password').val();
@@ -64,6 +64,8 @@
             return false;
         }
     });
+
+    // 네이버 로그인
     var naver_id_login = new naver_id_login("QpXcZhZXaWlFXujufX7I", "http://localhost:8087/sw/main");
     var state = naver_id_login.getUniqState();
     /*  naver_id_login.setButton("white", 2,40);  */

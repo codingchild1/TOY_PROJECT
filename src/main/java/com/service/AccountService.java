@@ -1,12 +1,12 @@
 package com.service;
 
+import com.dto.MberDate;
 import com.vo.AccountVO;
-import com.vo.DateVO;
 
 import java.util.List;
 
 public interface AccountService {
-    List<AccountVO> selectAccountList(DateVO dateVO) throws Exception;
+    List<AccountVO> selectAccountList(MberDate mberDate) throws Exception;
     void insertaccount(AccountVO accountVO) throws Exception;
     void updateAccount(AccountVO accountVO) throws Exception;
     AccountVO selectAccountByAccNo(String accNo) throws Exception;

@@ -1,6 +1,6 @@
 package com.vo;
 
-public class AccountVO {
+public class AccountVO extends MberVO{
     private String accDate;
     private String category;
     private String content;
