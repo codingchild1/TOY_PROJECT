@@ -13,7 +13,7 @@
 </head>
 <body>
 <section style="min-height: 700px;padding-top: 80px;">
-    <form id="signupForm" action="join" method="post">
+    <form id="signupForm" action="join.do" method="post">
         <input type="hidden" value="">
         <div style="width: 100%;max-width: 1500px;margin: 0 auto;padding: 0px 20px;">
             <div class="lgBox">
@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <input type="password" class="borderform" placeholder="Password" id="password" name="password" >
-                            <input type="password" class="borderform" placeholder="Confirm password" id="password2" name="password2">
+                            <input type="password" class="borderform" placeholder="Confirm password" id="password2">
                             <input type="text" class="borderform" placeholder="Your name (shown to the public)" id="mberNm" name="mberNm">
                             <input type="text" class="borderform" placeholder="Email" id="email" name="email">
                             <input type="text" class="borderform" placeholder="Phone" id="phoneNum" name="phoneNum">

@@ -22,4 +22,10 @@ public class SubPageServiceImpl implements SubPageSerivce {
         if(mem == null) return false;
         return true;
     }
+
+    @Override
+    public MberVO permitMber(MberVO mberVO) throws Exception {
+        return subPageDAO.permitMber(mberVO);
+    }
+
 }

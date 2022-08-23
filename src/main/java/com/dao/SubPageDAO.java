@@ -22,4 +22,8 @@ public class SubPageDAO extends SqlSessionDaoSupport {
         return getSqlSession().selectOne("memoverlap", mberId);
     }
 
+    public MberVO permitMber(MberVO mberVO) throws Exception {
+        return  getSqlSession().selectOne("permitMber", mberVO);
+    }
+
 }

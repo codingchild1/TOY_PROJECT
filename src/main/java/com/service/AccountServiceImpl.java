@@ -1,8 +1,8 @@
 package com.service;
 
 import com.dao.AccountDAO;
+import com.dto.MberDate;
 import com.vo.AccountVO;
-import com.vo.DateVO;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -15,8 +15,8 @@ public class AccountServiceImpl implements AccountService {
     private AccountDAO accountDAO;
 
     @Override
-    public List<AccountVO> selectAccountList(DateVO dateVO) throws Exception {
-        List<AccountVO> list = accountDAO.getlist(dateVO);
+    public List<AccountVO> selectAccountList(MberDate mberDate) throws Exception {
+        List<AccountVO> list = accountDAO.getlist(mberDate);
         return list;
     }
 

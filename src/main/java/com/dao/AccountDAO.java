@@ -1,7 +1,7 @@
 package com.dao;
 
+import com.dto.MberDate;
 import com.vo.AccountVO;
-import com.vo.DateVO;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ public class AccountDAO extends SqlSessionDaoSupport {
         super.setSqlSessionFactory(sqlSessionFactory);
     }
 
-    public List<AccountVO> getlist(DateVO dateVO) {
-        return getSqlSession().selectList("getlist", dateVO);
+    public List<AccountVO> getlist(MberDate mberDate) {
+        return getSqlSession().selectList("getlist", mberDate);
     }
 
     public void insertaccount(AccountVO accountVO) {

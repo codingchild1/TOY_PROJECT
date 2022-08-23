@@ -1,6 +1,6 @@
 package com.vo;
 
-public class DateVO {
+public class DateVO extends AccountVO{
     private String year;
     private String month;
     private String date;

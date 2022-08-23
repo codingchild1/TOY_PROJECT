@@ -10,9 +10,10 @@
         <result property="allAmount" column="all_amount"/>
         <result property="accNo" column="acc_no"/>
         <result property="accDelete" column="acc_delete"/>
+        <result property="mberId" column="mber_id"/>
     </resultMap>
 
-    <select id="getlist" resultMap="accountVO" parameterType="com.vo.DateVO">
+    <select id="getlist" resultMap="accountVO" parameterType="com.dto.MberDate">
         SELECT ACC_DATE,
         CATEGORY,
         CONTENT,
@@ -20,15 +21,17 @@
         ACC_NO
         FROM SW_ACCOUNT
         WHERE ACC_DATE LIKE
-        #{year}
-        <if test="month != null and month !=''">
-            || '-' || #{month}
+        #{dateVO.year}
+--         어떤 year인지 모르기 때문에 dateVO로 지정해주기
+        <if test="dateVO.getMonth() != null and dateVO.getMonth() !=''">
+            || '-' || #{dateVO.month}
         </if>
-        <if test="date != null and date != ''">
-            || '-' || #{date}
+        <if test="dateVO.getDate() != null and dateVO.getDate() != ''">
+            || '-' || #{dateVO.date}
         </if>
         || '%'
         AND ACC_DELETE = FALSE
+        AND mber_id = #{mberVO.mberId}
         ORDER BY ACC_DATE DESC
     </select>
 

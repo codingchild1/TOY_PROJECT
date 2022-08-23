@@ -1,10 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<jsp:useBean id="now" class="java.util.Date"/>
-<jsp:include page="/WEB-INF/views/jsp/header/navibar.jsp"/>
-<body>
+<%@ include file="/WEB-INF/views/jsp/header/navibar.jsp" %>
 <%--사이드바--%>
 <nav class="sidenav">
     <div>
@@ -104,6 +99,7 @@
     const modal = document.querySelector(".modal");
     //처음시작
     getList();
+
     // init();
     function init() {
         $(document).on("click", ".open", function () {
@@ -227,7 +223,7 @@
                 "accNo": accNo
             },
             success: function (data, textStatus) {
-                
+
 
                 $("#modal_date").val(data.accDate);
                 $("#modal_category").val(data.category);
@@ -237,9 +233,9 @@
                 $("#accNo").val(accNo);   // input태그에 요소 추가
 
             },
-            error:function(request, status, error){
+            error: function (request, status, error) {
 
-                alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+                alert("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
 
             }
         })
@@ -254,7 +250,7 @@
             "amount": $("#modal_amount").val(),
             "accNo": accNo  // parameter 가져오기
         }
-        
+
         $.ajax({
             url: '/rest/modifylist',
             type: 'post',
@@ -319,7 +315,7 @@
                     str += "<td class=notice-category>" + i.category + "</td>";
                     str += "<td class=notice-content>" + i.content + "</td>";
                     str += "<td class=notice-amount>";
-                    str += "<span class=notice-label>" + i.amount.format()+ "</span>";
+                    str += "<span class=notice-label>" + i.amount.format() + "</span>";
                     str += "</td>";
                     str += "<td class=noticce-total>";
                     str += "<span class=notice-file-icon>" + allAmount.format() + "</span>";
@@ -361,7 +357,7 @@
 
     // format() 함수 추가
     Number.prototype.format = function () {
-        if (this==0) return 0;
+        if (this == 0) return 0;
 
         let reg = /(^[+-]?\d+)(\d{3})/;
         let num = (this + '');
