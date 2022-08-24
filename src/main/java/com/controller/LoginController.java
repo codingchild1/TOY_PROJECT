@@ -53,10 +53,24 @@ public class LoginController {
     }
 
     @RequestMapping("logout.do")
-    public String logout(HttpServletRequest request) {
+    public String logout(HttpServletRequest request){
         HttpSession session = request.getSession();
         session.removeAttribute("vo");
         return "jsp/login/login";
+    }
+
+    @RequestMapping("naverlogin.do")
+    public String naverLogin(HttpSession session, MberVO mberVO) throws Exception {
+        try {
+            System.out.println("네이버로그인");
+            System.out.println("네이버로그인");
+
+            MberVO vo = subPageSerivce.naverMber(mberVO);
+            session.setAttribute("vo", vo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "jsp/account/main";
     }
 
 }

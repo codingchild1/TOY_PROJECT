@@ -48,8 +48,8 @@
         <!--SELECT COALESCE(MAX(SORT_ORDR),0)+1 AS ACC_NO FROM SW_ACCOUNT-->
         <!--</selectKey>-->
         INSERT INTO SW_ACCOUNT(
-        ACC_DATE, CATEGORY, CONTENT, AMOUNT)
-        VALUES (#{accDate}, #{category}, #{content}, #{amount})
+        ACC_DATE, CATEGORY, CONTENT, AMOUNT, mber_id)
+        VALUES (#{accDate}, #{category}, #{content}, #{amount}, #{mberId})
     </insert>
 
     <update id="updateAccount" parameterType="com.vo.AccountVO">

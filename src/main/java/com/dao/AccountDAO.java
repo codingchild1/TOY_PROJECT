@@ -36,4 +36,5 @@ public class AccountDAO extends SqlSessionDaoSupport {
     public void deleteAccList(AccountVO accountVO) {
         getSqlSession().update("deleteAccList", accountVO);
     }
+
 }

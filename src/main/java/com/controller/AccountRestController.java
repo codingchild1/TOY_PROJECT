@@ -40,7 +40,11 @@ public class AccountRestController {
     }
 
     @RequestMapping("insertlist")
-    public String insertList(AccountVO accountVO) throws Exception {
+    public String insertList(HttpSession session, AccountVO accountVO) throws Exception {
+        MberDate mberDate = new MberDate();
+        MberVO mberVO = (MberVO)session.getAttribute("vo");
+        mberDate.setAccountVO(accountVO);
+        mberDate.setMberVO(mberVO);
         try {
             accountService.insertaccount(accountVO);
         } catch (Exception e) {
