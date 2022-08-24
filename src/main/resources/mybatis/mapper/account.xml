@@ -59,6 +59,7 @@
         , CONTENT = #{content}
         , AMOUNT = #{amount}
         WHERE acc_no = #{accNo}
+        AND mber_id = #{mberId}
     </update>
 
     <select id="selectAccountByAccNo" resultMap="accountVO">
