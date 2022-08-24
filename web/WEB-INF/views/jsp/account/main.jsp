@@ -250,7 +250,8 @@
             "category": $("#modal_category").val(),
             "content": $("#modal_content").val(),
             "amount": $("#modal_amount").val(),
-            "accNo": accNo  // parameter 가져오기
+            "accNo": accNo,  // parameter 가져오기
+            "mberId": $("#modal_mberId").val()
         }
 
         $.ajax({
