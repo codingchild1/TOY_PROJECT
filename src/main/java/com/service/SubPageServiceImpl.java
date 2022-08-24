@@ -28,4 +28,8 @@ public class SubPageServiceImpl implements SubPageSerivce {
         return subPageDAO.permitMber(mberVO);
     }
 
+    @Override
+    public MberVO naverMber(MberVO mberVO) throws Exception {
+        return subPageDAO.naverMber(mberVO);
+    }
 }

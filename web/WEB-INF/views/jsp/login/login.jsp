@@ -32,8 +32,13 @@
                         </div>
                         <span style="display: block;text-align: center;font-size: 13px;">OR</span>
                         <div class="snsLogin" style="width: 80%;margin: 10px auto 20px;display: flex;max-width: 300px;justify-content: center;align-items: center;flex-direction: row;">
-                            <a id="naver_id_login" style="background: url(/resources/images/n.png) no-repeat center center #4d72b9;background-size: 24px;" ></a>
+                            <a id="naverIdLogin_loginButton" style="background: url(/resources/images/n.png) no-repeat center center #4d72b9;background-size: 24px;" ></a>
                             <a id="GgCustomLogin" style="background: url(/resources/images/g.png) no-repeat center center #4d72b9;background-size: 20px;cursor:pointer;" ></a>
+                            <%--<li onclick="naverLogout(); return false;">--%>
+                                <%--<a href="javascript:void(0)">--%>
+                                    <%--<span>네이버 로그아웃</span>--%>
+                                <%--</a>--%>
+                            <%--</li>--%>
                         </div>
                         <div class="toLogin" style="display: flex;justify-content: center;align-items: center;">
                             <span style="display: block;text-align: center;font-size: 13px;">Have no account?<a href="joinform.do">Sign Up</a></span><br>
@@ -64,57 +69,52 @@
             return false;
         }
     });
-
     // 네이버 로그인
-    var naver_id_login = new naver_id_login("QpXcZhZXaWlFXujufX7I", "http://localhost:8087/sw/main");
-    var state = naver_id_login.getUniqState();
-    /*  naver_id_login.setButton("white", 2,40);  */
-    naver_id_login.setDomain("http://localhost:8087/sw/loginform.do");
-    naver_id_login.setState(state);
-    /*  naver_id_login.setPopup();  */
-    naver_id_login.init_naver_id_login();
+    // https://tyrannocoding.tistory.com/60
+    var naverLogin = new naver.LoginWithNaverId(
+        {
+            clientId: "QpXcZhZXaWlFXujufX7I", //내 애플리케이션 정보에 cliendId를 입력해줍니다.
+            callbackUrl: "http://localhost:8087/sw/main", // 내 애플리케이션 API설정의 Callback URL 을 입력해줍니다.
+            isPopup: false,
+            callbackHandle: true
+        }
+    );
 
-    function init() {
-        gapi.load('auth2', function() {
-            gapi.auth2.init();
-            options = new gapi.auth2.SigninOptionsBuilder();
-            options.setPrompt('select_account');
-            // 추가는 Oauth 승인 권한 추가 후 띄어쓰기 기준으로 추가
-            options.setScope('email profile openid https://www.googleapis.com/auth/user.birthday.read');
-            // 인스턴스의 함수 호출 - element에 로그인 기능 추가
-            // GgCustomLogin은 li태그안에 있는 ID, 위에 설정한 options와 아래 성공,실패시 실행하는 함수들
-            gapi.auth2.getAuthInstance().attachClickHandler('GgCustomLogin', options, onSignIn, onSignInFailure);
-        })
-    }
-    function onSignInFailure(t){
-        console.log(t);
-    }
-    function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-        console.log('Name: ' + profile.getName());
-        /* console.log('Image URL: ' + profile.getImageUrl()); */
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
-        let email = profile.getEmail();
-        let id = profile.getId();
-        let name = profile.getName();
-        $.ajax({
-            type:"post",
-            dataType:"text",
-            async:false,
-            url:"${pageContext.request.contextPath}/naverlogin",
-            data:{"id":id,
-                "name":name,
-                "email":email},
-            success: function(data, textStatus){
-                location.href="/main";
-                console.log("success");
+    naverLogin.init();
 
-            },
-            error:function(data, textStatus){
-                alert("실패");
+    window.addEventListener('load', function () {
+        naverLogin.getLoginStatus(function (status) {
+            if (status) {
+                var email = naverLogin.user.getEmail(); // 필수로 설정할것을 받아와 아래처럼 조건문을 줍니다.
+
+                console.log(naverLogin.user);
+
+                if( email == undefined || email == null) {
+                    alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
+                    naverLogin.reprompt();
+                    return;
+                }
+            } else {
+                console.log("callback 처리에 실패하였습니다.");
             }
         });
+    });
+
+
+    var testPopUp;
+    function openPopUp() {
+        testPopUp= window.open("https://nid.naver.com/nidlogin.logout", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,width=1,height=1");
+    }
+    function closePopUp(){
+        testPopUp.close();
+    }
+
+    function naverLogout() {
+        openPopUp();
+        setTimeout(function() {
+            closePopUp();
+        }, 1000);
+
     }
 </script>
 </body>

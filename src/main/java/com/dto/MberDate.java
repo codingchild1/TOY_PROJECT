@@ -1,5 +1,6 @@
 package com.dto;
 
+import com.vo.AccountVO;
 import com.vo.DateVO;
 import com.vo.MberVO;
 
@@ -7,6 +8,7 @@ import com.vo.MberVO;
 public class MberDate {
     private MberVO mberVO;
     private DateVO dateVO;
+    private AccountVO accountVO;
 
     public MberVO getMberVO() {
         return mberVO;
@@ -22,5 +24,13 @@ public class MberDate {
 
     public void setDateVO(DateVO dateVO) {
         this.dateVO = dateVO;
+    }
+
+    public AccountVO getAccountVO() {
+        return accountVO;
+    }
+
+    public void setAccountVO(AccountVO accountVO) {
+        this.accountVO = accountVO;
     }
 }

@@ -54,6 +54,7 @@
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
         </div>
         <input type="hidden" id="accNo"/>
+        <input type="text" id="modal_mberId" value="${vo.mberId}"/>
     </div>
     <label for="createacc"></label>
     <button type="button" id="createacc" class="open"><img style="width: 40px;
@@ -196,7 +197,8 @@
             "accDate": $("#modal_date").val(),
             "category": $("#modal_category").val(),
             "content": $("#modal_content").val(),
-            "amount": $("#modal_amount").val()
+            "amount": $("#modal_amount").val(),
+            "mberId": $("#modal_mberId").val()
         }
         $.ajax({
             url: '/rest/insertlist',
