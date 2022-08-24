@@ -1,0 +1,85 @@
+[33mcommit 64022b75a46eca09a779e3041cbc4021c6f820db[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: codingchild1 <tkddnjs04230@naver.com>
+Date:   Wed Aug 24 17:25:42 2022 +0900
+
+    8.24 수정 로그인 연동
+
+[33mcommit 6c82015e30aeb8851a38ebfc4c48d94ac82b8bea[m
+Author: codingchild1 <tkddnjs04230@naver.com>
+Date:   Wed Aug 24 15:39:14 2022 +0900
+
+    8.23 글쓰기 로그인 연동
+
+[33mcommit 237696c2bbef2d58116e7d39a3551c204a729192[m
+Author: codingchild1 <tkddnjs04230@naver.com>
+Date:   Tue Aug 23 18:18:29 2022 +0900
+
+    8.23 로그인 및 세션 정보 활용해서 데이터 가져오기
+
+[33mcommit fee715734cb5b4163877c0a6164dc562a813c593[m
+Author: codingchild1 <tkddnjs04230@naver.com>
+Date:   Mon Aug 22 18:13:24 2022 +0900
+
+    회원가입 및 로그인 8.22
+
+[33mcommit 48e8f50dd1a5f7a282784ab6e9f2dfdf14567bc2[m
+Author: codingchild1 <tkddnjs04230@naver.com>
+Date:   Mon Aug 22 17:43:07 2022 +0900
+
+    회원가입 및 로그인 중간
+
+[33mcommit 5b8e29182c004393894263c5711c25998ac12530[m
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Mon Aug 22 17:29:13 2022 +0900
+
+    회원가입 및 로그인 중간
+
+[33mcommit 95094754474cdc102831ddf224dddd7eb58fdc61[m
+Merge: 2b25838 b3b6068
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Mon Aug 22 11:05:04 2022 +0900
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 2b25838b03a4eed0d29ad6137142e362cecf9dfe[m
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Mon Aug 22 11:04:51 2022 +0900
+
+    최초의 커밋
+
+[33mcommit b3b6068b509e3041003ae104f460c21599fba506[m
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Mon Aug 22 10:57:08 2022 +0900
+
+    remove file
+
+[33mcommit 2303aeefa6bf56b1cec74bb7da66e4868258f824[m
+Merge: b6a52c7 7619d0a
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Thu Aug 18 18:46:39 2022 +0900
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit b6a52c77029b818563579682ada52cb86411a441[m
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Thu Aug 18 18:46:29 2022 +0900
+
+    최초의 커밋
+
+[33mcommit 7619d0a1282c1e2ee40b1299036f413f7683d588[m
+Author: codingchild1 <99957228+codingchild1@users.noreply.github.com>
+Date:   Thu Aug 18 14:25:06 2022 +0900
+
+    Update README.md
+
+[33mcommit 02f9b719ecc91b388fa2ab983dfb6f20a91c9d5d[m
+Author: codingchild1 <99957228+codingchild1@users.noreply.github.com>
+Date:   Thu Aug 18 14:21:18 2022 +0900
+
+    Create README.md
+
+[33mcommit 24c7983db11de0ff60e8982b19665f5aa0e17fbd[m
+Author: codingchild1 <tkddnjs0230@naver.com>
+Date:   Thu Aug 18 14:07:34 2022 +0900
+
+    최초의 커밋
