@@ -54,7 +54,7 @@
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
         </div>
         <input type="hidden" id="accNo"/>
-        <input type="text" id="modal_mberId" value="${vo.mberId}"/>
+        <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
     <label for="createacc"></label>
     <button type="button" id="createacc" class="open"><img style="width: 40px;

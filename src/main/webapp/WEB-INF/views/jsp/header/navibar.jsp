@@ -7,6 +7,7 @@
 <head>
     <title>마이 가계부</title>
     <link rel="stylesheet" href="/resources/css/main.css">
+    <link rel="shortcut icon" href="#">
 </head>
 <body>
 <%--헤더--%>
@@ -18,12 +19,12 @@
     </li>
     <li class="item">
         <ul>
-            <div class="menu"><a href="#">Diary</a></div>
+            <div class="menu"><a href="diaymainform.do">Diary</a></div>
         </ul>
     </li>
     <li class="item">
         <ul>
-            <div class="menu"><a href="#">account</a></div>
+            <div class="menu"><a href="main">account</a></div>
         </ul>
     </li>
     <li class="item">
@@ -52,9 +53,15 @@
         <c:otherwise>
             <li class="item login">
                 <ul>
-                    <div class="menu"><a href="/sw/logout.do">로그아웃 ${vo.mberId}</a></div>
+                    <div class="menu logout"><a href="/sw/logout.do">로그아웃</a></div>
                 </ul>
             </li>
+            <li class="item login">
+                <ul>
+                    <div class="menu"><a href="#">&nbsp;&nbsp;&nbsp;${vo.mberId}</a></div>
+                </ul>
+            </li>
+
         </c:otherwise>
     </c:choose>
 </nav>

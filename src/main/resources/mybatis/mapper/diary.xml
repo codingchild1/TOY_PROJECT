@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.dao.DiaryDAO">
+
+    <resultMap id="diaryDAO" type="com.vo.DiaryVO">
+        <result property="diaryId" column="mber_id"/>
+        <result property="diaryDate" column="diary_date"/>
+        <result property="diaryTitle" column="diary_title"/>
+        <result property="diaryContents" column="diary_contents"/>
+        <result property="picturePath" column="picture_path"/>
+        <result property="diaryDelete" column="diary_delete"/>
+        <result property="images" column="images"/>
+        <result property="diaryNo" column="diary_no"/>
+    </resultMap>
+
+    <select id="getDiaryList" resultMap="diaryDAO" parameterType="com.vo.DiaryVO">
+        select mber_id
+        , diary_date
+        , diary_title
+        , diary_contents
+        , picture_path
+        , diary_delete
+        , images
+        , diary_no
+        from
+        sw_diary
+        where diary_delete = false
+    </select>
+
+</mapper>
