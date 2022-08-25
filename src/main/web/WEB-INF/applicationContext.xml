@@ -24,7 +24,7 @@
     </bean>
 
     <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+        <constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
 
     <!--@Mapper 어노테이션이 부착된 mappers 인터페이스를 전부 스캔해서 mappers 인스턴스(mappers 인터페이스를 구현한 객체)를 생성하고 스프링 컨테이너에 등록시키기-->
