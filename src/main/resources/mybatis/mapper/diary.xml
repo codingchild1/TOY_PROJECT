@@ -25,6 +25,7 @@
         from
         sw_diary
         where diary_delete = false
+        order by diary_date desc
     </select>
 
 </mapper>

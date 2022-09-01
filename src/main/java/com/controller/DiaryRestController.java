@@ -19,7 +19,6 @@ public class DiaryRestController {
 
     @RequestMapping("diarylist.do")
     public List<DiaryVO> diaryListdo(HttpSession session, DiaryVO diaryVO) throws Exception{
-//        MberVO mberVO = (MberVO)session.getAttribute("vo");
         List<DiaryVO> diaryList = new ArrayList<>();
         try {
             diaryList = diaryService.diaryList(diaryVO);

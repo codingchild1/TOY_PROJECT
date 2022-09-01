@@ -27,6 +27,7 @@
 
 <div class="accdetail">
     <h1 class="total" style="cursor: pointer;"></h1>
+    <%--여기부터 모달창--%>
     <div class="modal hidden" id="jsModal">
         <span class="modal_title">내 지출 </span>
         <ul class="modal_list">
@@ -56,6 +57,7 @@
         <input type="hidden" id="accNo"/>
         <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
+    <%--여기까지 모달창--%>
     <label for="createacc"></label>
     <button type="button" id="createacc" class="open"><img style="width: 40px;
     height: 35px;" src="/resources/images/free-icon-web-design-8190501.png"></button>

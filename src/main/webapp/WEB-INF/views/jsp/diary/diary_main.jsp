@@ -4,6 +4,7 @@
 <%--사이드바--%>
 <nav class="sidenav">
     <div>
+
     </div>
 </nav>
 <%--사이드 메뉴 끝--%>
@@ -56,24 +57,41 @@
         <%--<div class="test box_on"></div>--%>
         <%--가계부 본문--%>
     </div>
+
+    <%--모달창 시작--%>
+    <div class="modal hidden">
+        <span class="modal_title">다이어리</span>
+
+    </div>
+
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
+    const open = document.querySelector(".open");
+    // const close = document.querySelector(".modal__closeBtn");
+    // const modal = document.querySelector(".modal");
+
+    function modal() {
+
+    }
+
     start();
 
     function start() {
-        debugger
         $.ajax({
             url: "http://localhost:8087/rest/diarylist.do",
             type: "get",
             dataType: "json",
             success: function (returnData, textStatus) {
                 str = "";
+                let j = 0;
                 for (const i of returnData) {
-                    str += "<div class='test " +  (i ? 'diary_box_on' : 'diary_box_right'); + " '>";
-                    str += "<h2 class='diary_box diary_box_date'>" + i.diaryDate + "</h2>";
-                    str += "<h1 class='diary_box diary_box_title'>" + i.diaryTitle + "</h1>";
-                    str += "<h3 class='diary_box diary_box_account'>" + i.allAmount + "</h3>";
+                    console.log()
+                    j++;
+                    str += "<div class='test " +  (i % 4 === 0 ? "diary_box_on" : "box_right") + " '>";
+                    str += "<h2 class='diary_box box_right'>" + i.diaryDate + "</h2>";
+                    str += "<h1 class='diary_box box_right diary_box_title'>" + i.diaryTitle + "</h1>";
+                    str += "<h3 class='diary_box box_on diary_box_account'>" + i.allAmount + "</h3>";
                     str += '</div>'
                 }
                 $('#diaryList').append(str);

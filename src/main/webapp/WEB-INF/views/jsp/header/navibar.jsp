@@ -58,7 +58,7 @@
             </li>
             <li class="item login">
                 <ul>
-                    <div class="menu"><a href="#">&nbsp;&nbsp;&nbsp;${vo.mberId}</a></div>
+                    <div class="menu" style="width: 70px;"><a href="#">&nbsp;&nbsp;&nbsp;${vo.mberId}</a></div>
                 </ul>
             </li>
 
