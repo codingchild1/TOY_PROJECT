@@ -35,14 +35,6 @@
         ORDER BY ACC_DATE DESC
     </select>
 
-    <!--<select id="selecttotal" resultType="com.vo.AccountVO">-->
-    <!--SELECT ALL_AMOUNT-->
-    <!--FROM (SELECT SUM(AMOUNT) OVER (ORDER BY ACC_NO) AS ALL_AMOUNT-->
-    <!--, RANK() OVER (ORDER BY ACC_NO DESC) AS RANK-->
-    <!--FROM SW_ACCOUNT) AS A-->
-    <!--WHERE A.RANK = 1;-->
-    <!--</select>-->
-
     <insert id="insertaccount" parameterType="com.vo.AccountVO">
         <!--<selectKey keyProperty="accNo" resultType="java.lang.Long" order="BEFORE">-->
         <!--SELECT COALESCE(MAX(SORT_ORDR),0)+1 AS ACC_NO FROM SW_ACCOUNT-->
