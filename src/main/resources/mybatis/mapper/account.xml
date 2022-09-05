@@ -36,9 +36,6 @@
     </select>
 
     <insert id="insertaccount" parameterType="com.vo.AccountVO">
-        <!--<selectKey keyProperty="accNo" resultType="java.lang.Long" order="BEFORE">-->
-        <!--SELECT COALESCE(MAX(SORT_ORDR),0)+1 AS ACC_NO FROM SW_ACCOUNT-->
-        <!--</selectKey>-->
         INSERT INTO SW_ACCOUNT(
         ACC_DATE, CATEGORY, CONTENT, AMOUNT, mber_id)
         VALUES (#{accDate}, #{category}, #{content}, #{amount}, #{mberId})
