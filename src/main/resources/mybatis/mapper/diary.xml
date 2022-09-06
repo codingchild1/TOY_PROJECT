@@ -28,4 +28,14 @@
         order by diary_date desc
     </select>
 
+    <!--총 금액 join-->
+    <!--select sum(amount), d.mber_id, d.diary_date-->
+    <!--from sw_diary as d-->
+    <!--left outer join-->
+    <!--(select *-->
+    <!--from sw_account-->
+    <!--where acc_delete = false) as a-->
+    <!--on a.acc_date = d.diary_date-->
+    <!--and a.mber_id = d.mber_id-->
+    <!--group by d.mber_id, d.diary_date;-->
 </mapper>
