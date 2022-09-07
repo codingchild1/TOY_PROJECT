@@ -26,7 +26,7 @@ public class SubPageDAO extends SqlSessionDaoSupport {
         return  getSqlSession().selectOne("permitMber", mberVO);
     }
 
-    public MberVO naverMber(MberVO mberVO) {
+    public MberVO naverMber(MberVO mberVO) throws Exception {
         return getSqlSession().selectOne("naverMber", mberVO);
     }
 
