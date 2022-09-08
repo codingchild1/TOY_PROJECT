@@ -27,10 +27,10 @@ public class AccountRestController {
         MberDate mberDate = new MberDate(); // 객체변수
         MberVO mberVO = (MberVO)session.getAttribute("vo"); // session에서 값 불러오기
         mberDate.setMberVO(mberVO); // 객체 mberDate 의 MberVO 안에 mberVO 값들 파라미터로 넣어주기
-        mberDate.setDateVO(dateVO); // 객체 mberDate 의 DateVO 안에 mberVO 값들 파라미터로 넣어주기
+        mberDate.setDateVO(dateVO); // 객체 mberDate 의 DateVO 안에 dateVO 값들 파라미터로 넣어주기
         try {
             if (!dateVO.getMonth().equals("")) {
-                dateVO.setMonth(String.format("%02d", Integer.parseInt(dateVO.getMonth())));
+                dateVO.setMonth(String.format("%02d", Integer.parseInt(dateVO.getMonth())));    // 무조건 두 자리 숫자로 나타나도록 파싱해서 객체에 삽입
             }
             accList = accountService.selectAccountList(mberDate);
         } catch (Exception e) {

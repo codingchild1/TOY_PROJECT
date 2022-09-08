@@ -273,6 +273,7 @@
 
     // 목록 불러오기
     function getList() {
+        debugger;
         let today = {
             "year": $("#yearBox").val(),
             "month": $("#monthBox").val(),
@@ -334,8 +335,8 @@
                 strCate += "<tr>";
                 strCate += "<th>" + "식비: " + foodAmount.format() + " 원" + "</th>";
                 strCate += "<th>" + "건강: " + healthAmount.format() + " 원" + "</th>";
-                strCate += "<th>" + "쇼핑: " + playAmount.format() + " 원" + "</th>";
-                strCate += "<th>" + "놀이: " + shoppingAmount.format() + " 원" + "</th>";
+                strCate += "<th>" + "쇼핑: " + shoppingAmount.format() + " 원" + "</th>";
+                strCate += "<th>" + "놀이: " + playAmount.format() + " 원" + "</th>";
                 strCate += "<th>" + "기타: " + etcAmount.format() + " 원" + "</th>";
                 strCate += "</tr>";
 
