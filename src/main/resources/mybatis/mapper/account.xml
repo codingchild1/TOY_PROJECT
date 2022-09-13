@@ -32,7 +32,7 @@
         || '%'
         AND ACC_DELETE = FALSE
         AND mber_id = #{mberVO.mberId}
-        ORDER BY ACC_DATE DESC
+        ORDER BY ACC_DATE desc
     </select>
 
     <insert id="insertaccount" parameterType="com.vo.AccountVO">

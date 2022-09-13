@@ -30,7 +30,10 @@ public class AccountRestController {
         mberDate.setDateVO(dateVO); // 객체 mberDate 의 DateVO 안에 dateVO 값들 파라미터로 넣어주기
         try {
             if (!dateVO.getMonth().equals("")) {
-                dateVO.setMonth(String.format("%02d", Integer.parseInt(dateVO.getMonth())));    // 무조건 두 자리 숫자로 나타나도록 파싱해서 객체에 삽입
+                dateVO.setMonth(String.format("%02d", Integer.parseInt(dateVO.getMonth())));    // "월"을 두 자리 숫자로 나타나도록 파싱해서 객체에 삽입
+            }
+            if (!dateVO.getDate().equals("")) {
+                dateVO.setDate(String.format("%02d", Integer.parseInt(dateVO.getDate())));    // 일자를 두 자리 숫자로 나타나도록 파싱해서 객체에 삽입
             }
             accList = accountService.selectAccountList(mberDate);
         } catch (Exception e) {
