@@ -11,6 +11,7 @@
         <result property="mberState" column="mber_state"/>
         <result property="esntlId" column="esntl_id"/>
         <result property="mberId" column="mber_id"/>
+        <result property="mberStat" column="mber_stat"/>
     </resultMap>
 
     <insert id="mberjoin" parameterType="com.vo.MberVO">
@@ -25,7 +26,21 @@
         where mber_id=#{mberId}
     </select>
 
-    <select id="permitMber" parameterType="com.vo.MberVO" resultMap="mberjoin">
+    <!--<select id="permitMber" parameterType="com.vo.MberVO" resultMap="mberjoin">-->
+        <!--select password-->
+        <!--, mber_nm-->
+        <!--, email-->
+        <!--, phone_num-->
+        <!--, mber_type-->
+        <!--, mber_state-->
+        <!--, esntl_id-->
+        <!--, mber_id-->
+        <!--from sw_mber-->
+        <!--where mber_id = #{mberId}-->
+        <!--and password = #{password}-->
+    <!--</select>-->
+
+    <select id="getUserById" parameterType="com.vo.MberVO" resultMap="mberjoin">
         select password
         , mber_nm
         , email
@@ -34,11 +49,9 @@
         , mber_state
         , esntl_id
         , mber_id
+        , mber_stat
         from sw_mber
         where mber_id = #{mberId}
-        and password = #{password}
     </select>
-
-
 
 </mapper>

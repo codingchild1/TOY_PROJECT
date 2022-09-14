@@ -30,4 +30,8 @@ public class SubPageDAO extends SqlSessionDaoSupport {
         return getSqlSession().selectOne("naverMber", mberVO);
     }
 
+    public MberVO getUserById(String mberId) {
+        return getSqlSession().selectOne("getUserById", mberId);
+    }
+
 }

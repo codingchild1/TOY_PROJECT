@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Title</title>
@@ -46,6 +47,11 @@
                     </div>
                 </div>
             </div>
+
+            <c:if test="${not empty error}">
+                <input id="err" type="hidden" value="${error}">
+            </c:if>
+
         </div>
     </form>
 </section>
@@ -69,6 +75,14 @@
             return false;
         }
     });
+
+    error()
+    function error() {
+        if ($("#err").length > 0) {
+            alert($('#err').val());
+        }
+    }
+
     // 네이버 로그인
     // https://tyrannocoding.tistory.com/60
     var naverLogin = new naver.LoginWithNaverId(

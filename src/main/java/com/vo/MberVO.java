@@ -11,6 +11,7 @@ public class MberVO {
     private String mberType;
     private String mberState;
     private String esntlId;
+    private Boolean mberStat;
 
     public String getMberId() {
         return mberId;
@@ -90,5 +91,13 @@ public class MberVO {
 
     public void setEsntlId(String esntlId) {
         this.esntlId = esntlId;
+    }
+
+    public Boolean getMberStat() {
+        return mberStat;
+    }
+
+    public void setMberStat(Boolean mberStat) {
+        this.mberStat = mberStat;
     }
 }

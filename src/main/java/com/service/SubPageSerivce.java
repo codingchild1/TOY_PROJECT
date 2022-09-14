@@ -7,4 +7,5 @@ public interface SubPageSerivce {
     boolean memoverlap(String mberId) throws Exception;
     MberVO permitMber(MberVO mberVO) throws Exception;
     MberVO naverMber(MberVO mberVO) throws Exception;
+    MberVO login(String mberId, String password);
 }

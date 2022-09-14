@@ -43,4 +43,37 @@
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>
+
+    <!--<jsp-config>-->
+        <!--<jsp-property-group>-->
+            <!--<url-pattern>*.jsp</url-pattern>-->
+            <!--<include-prelude>WEB-INF/views/jsp/common/tags.jsp</include-prelude>-->
+        <!--</jsp-property-group>-->
+    <!--</jsp-config>-->
+    <!--
+		모든 jsp 페이지의 맨 앞부분과 맨 뒷부분에 지정된 jsp의 내용을 추가하기
+
+		<jsp-config> 			jsp에 관련된 설정을 정의하기위한 태그
+		<jsp-property-group> 	jsp와 관련 된 설정의 하나의 그룹으로 지정하기 위한 태그
+		<url-pattern> 			설정을 적용할 대상을 지정하는 태그
+		<include-prelude> 		적용대상 jsp 페이지의 맨 앞부분에 include할 jsp를 지정한다.
+		<include-coda> 			적용대상 jsp 페이지의 맨 뒷부분에 include할 jsp를 지정한다.
+	 -->
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/WEB-INF/views/jsp/error/notFound.jsp</location>
+    </error-page>
+    <!--
+		에러 페이지 설정
+		<error-page>
+			<error-code>HTTP 응답코드</error-code>
+			<location>에러페이지경로 및 파일명</location>
+		</error-page>
+
+		<error-page>
+			<exception-type>예외클래스의 패키지를 포함한 전체 경로</exception-type>
+			<location>에러페이지경로 및 파일명</location>
+		</error-page>
+	 -->
 </web-app>
