@@ -1,7 +1,7 @@
 package com.service;
 
 import com.dao.DiaryDAO;
-import com.vo.DiaryVO;
+import com.dto.DiaryAcc;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,7 @@ public class DiaryServiceImpl implements DiaryService {
     DiaryDAO diaryDAO;
 
     @Override
-    public List<DiaryVO> diaryList(DiaryVO diaryVO) throws Exception {
-        return diaryDAO.getDiaryList(diaryVO);
+    public List<DiaryAcc> diaryList(DiaryAcc diaryAcc) throws Exception {
+        return diaryDAO.getDiaryList(diaryAcc);
     }
 }

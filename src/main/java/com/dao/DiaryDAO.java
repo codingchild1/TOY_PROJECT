@@ -1,6 +1,6 @@
 package com.dao;
 
-import com.vo.DiaryVO;
+import com.dto.DiaryAcc;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ public class DiaryDAO extends SqlSessionDaoSupport {
         super.setSqlSessionFactory(sqlSessionFactory);
     }
 
-    public List<DiaryVO> getDiaryList(DiaryVO diaryVO) throws Exception {
-        return getSqlSession().selectList("getDiaryList", diaryVO);
+    public List<DiaryAcc> getDiaryList(DiaryAcc diaryAcc) throws Exception {
+        return getSqlSession().selectList("getDiaryList", diaryAcc);
     }
 }

@@ -40,7 +40,7 @@
         <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
     <label for="createacc"></label>
-    <button type="button" id="createacc" class="open" style="top: 0px;"><img style="width: 40px;
+    <button type="button" id="createacc" class="open" style="top: 0px; opacity: 1;"><img style="width: 40px;
     height: 35px;" src="/resources/images/free-icon-web-design-8190501.png"></button>
     <div id="diaryList">
         <%--<div class="test box_right">--%>
@@ -71,8 +71,11 @@
     // const close = document.querySelector(".modal__closeBtn");
     // const modal = document.querySelector(".modal");
 
+    modal();
     function modal() {
-
+        $(document).on("click", ".open", function () {
+            modal.classList.remove("hidden");
+        });
     }
 
     start();
@@ -91,7 +94,7 @@
                     str += "<div class='test " +  (i % 4 === 0 ? "diary_box_on" : "box_right") + " '>";
                     str += "<h2 class='diary_box box_right'>" + i.diaryDate + "</h2>";
                     str += "<h1 class='diary_box box_right diary_box_title'>" + i.diaryTitle + "</h1>";
-                    str += "<h3 class='diary_box box_on diary_box_account'>" + i.allAmount + "</h3>";
+                    str += "<h3 class='diary_box box_on diary_box_account'>" + i.amount + "</h3>";
                     str += '</div>'
                 }
                 $('#diaryList').append(str);

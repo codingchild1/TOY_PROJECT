@@ -1,7 +1,8 @@
 package com.controller;
 
+import com.dto.DiaryAcc;
 import com.service.DiaryService;
-import com.vo.DiaryVO;
+import com.vo.MberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,10 +19,14 @@ public class DiaryRestController {
     DiaryService diaryService;
 
     @RequestMapping("diarylist.do")
-    public List<DiaryVO> diaryListdo(HttpSession session, DiaryVO diaryVO) throws Exception{
-        List<DiaryVO> diaryList = new ArrayList<>();
+    public List<DiaryAcc> diaryListdo(HttpSession session, DiaryAcc diaryAcc) throws Exception{
+        List<DiaryAcc> diaryList = new ArrayList<>();
+
         try {
-            diaryList = diaryService.diaryList(diaryVO);
+            MberVO mberVO = (MberVO) session.getAttribute("vo");    // 세션에 저장 되어있는 vo 정보 받아서 객체에 삽입
+            diaryAcc.setMberId(mberVO.getMberId()); // dto 에 필요한 값 (아이디) 넣어주기
+            diaryList = diaryService.diaryList(diaryAcc);
+
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -13,19 +13,49 @@
         <result property="diaryNo" column="diary_no"/>
     </resultMap>
 
-    <select id="getDiaryList" resultMap="diaryDAO" parameterType="com.vo.DiaryVO">
-        select mber_id
-        , diary_date
-        , diary_title
-        , diary_contents
-        , picture_path
-        , diary_delete
-        , images
-        , diary_no
-        from
-        sw_diary
-        where diary_delete = false
-        order by diary_date desc
+    <resultMap id="DiaryAcc" type="com.dto.DiaryAcc">
+        <result property="mberId" column="mber_id"/>
+        <result property="diaryDate" column="diary_date"/>
+        <result property="diaryTitle" column="diary_title"/>
+        <result property="diaryContents" column="diary_contents"/>
+        <result property="picturePath" column="picture_path"/>
+        <result property="diaryDelete" column="diary_delete"/>
+        <result property="images" column="images"/>
+        <result property="diaryNo" column="diary_no"/>
+        <result property="accDate" column="acc_date"/>
+        <result property="category" column="category"/>
+        <result property="content" column="content"/>
+        <result property="amount" column="amount"/>
+        <result property="allAmount" column="all_amount"/>
+        <result property="accNo" column="acc_no"/>
+        <result property="accDelete" column="acc_delete"/>
+    </resultMap>
+
+    <select id="getDiaryList" resultMap="DiaryAcc" parameterType="com.dto.DiaryAcc">
+        select sum(amount) as amount
+		, d.mber_id
+		, d.diary_date
+		, d.diary_title
+        , d.diary_contents
+        , d.picture_path
+        , d.diary_delete
+        , d.images
+        , d.diary_no
+from sw_diary as d
+left outer join
+         (select *
+          from sw_account
+          where acc_delete = false) as a
+on a.acc_date = d.diary_date
+and a.mber_id = d.mber_id
+where d.mber_id = #{mberId}
+group by d.mber_id, d.diary_date 		, d.diary_title
+        , d.diary_contents
+        , d.picture_path
+        , d.diary_delete
+        , d.images
+        , d.diary_no
+		order by d.diary_date desc;
     </select>
 
     <!--총 금액 join-->
