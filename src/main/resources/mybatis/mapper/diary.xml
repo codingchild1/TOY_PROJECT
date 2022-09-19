@@ -3,7 +3,7 @@
 <mapper namespace="com.dao.DiaryDAO">
 
     <resultMap id="diaryDAO" type="com.vo.DiaryVO">
-        <result property="diaryId" column="mber_id"/>
+        <result property="mberId" column="mber_id"/>
         <result property="diaryDate" column="diary_date"/>
         <result property="diaryTitle" column="diary_title"/>
         <result property="diaryContents" column="diary_contents"/>
@@ -41,15 +41,17 @@
         , d.diary_delete
         , d.images
         , d.diary_no
-from sw_diary as d
-left outer join
+        from sw_diary as d
+        left outer join
          (select *
           from sw_account
           where acc_delete = false) as a
-on a.acc_date = d.diary_date
-and a.mber_id = d.mber_id
-where d.mber_id = #{mberId}
-group by d.mber_id, d.diary_date 		, d.diary_title
+        on a.acc_date = d.diary_date
+        and a.mber_id = d.mber_id
+        where d.mber_id = #{mberId}
+        group by d.mber_id
+        , d.diary_date
+        , d.diary_title
         , d.diary_contents
         , d.picture_path
         , d.diary_delete
@@ -68,4 +70,18 @@ group by d.mber_id, d.diary_date 		, d.diary_title
     <!--on a.acc_date = d.diary_date-->
     <!--and a.mber_id = d.mber_id-->
     <!--group by d.mber_id, d.diary_date;-->
+
+    <insert id="insertDiary" parameterType="com.vo.DiaryVO">
+        INSERT INTO sw_diary(
+        mber_id
+	    , diary_date
+	    , diary_title
+	    , diary_contents
+	    )
+	    VALUES (#{mberId}
+	    , #{diaryDate}
+	    , #{diaryTitle}
+	    , #{diaryContents}
+	    )
+    </insert>
 </mapper>

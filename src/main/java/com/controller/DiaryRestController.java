@@ -2,6 +2,7 @@ package com.controller;
 
 import com.dto.DiaryAcc;
 import com.service.DiaryService;
+import com.vo.DiaryVO;
 import com.vo.MberVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,4 +34,16 @@ public class DiaryRestController {
 
         return diaryList;
     }
+
+    @RequestMapping("insertDiary.do")
+    public String insertDiary(HttpSession session, DiaryVO diaryVO) throws Exception {
+        try {
+            diaryService.insertDiary(diaryVO);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
 }

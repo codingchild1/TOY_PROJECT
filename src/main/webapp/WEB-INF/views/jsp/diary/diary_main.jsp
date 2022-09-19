@@ -10,26 +10,18 @@
 <%--사이드 메뉴 끝--%>
 
 <div class="accdetail diaryBackImg">
-    <div class="modal hidden" id="jsModal">
+    <div class="modal hidden" id="jsModal" style="text-align: left;">
         <span class="modal_title">내 지출 </span>
         <ul class="modal_list">
             <li>Date</li>
-            <li class="input_list">Catrgory</li>
+            <li class="input_list">Title</li>
             <li class="input_list">Content</li>
-            <li class="input_list">Amount</li>
+            <%--<li class="input_list">Amount</li>--%>
         </ul>
         <div id="modal_inputboxid">
             <input type="date" id="modal_date" class="modal_inputbox"/>
-            <select id="modal_category" class="modal_inputbox">
-                <option value="선택" selected>선택</option>
-                <option value="식비">식비</option>
-                <option value="건강">건강</option>
-                <option value="놀이">놀이</option>
-                <option value="쇼핑">쇼핑</option>
-                <option value="기타">기타</option>
-            </select>
-            <input type="text" id="modal_content" class="modal_inputbox"/>
-            <input type="text" id="modal_amount" class="modal_inputbox">
+            <input type="text" id="modal_Title" class="modal_inputbox"/>
+            <input type="text" id="modal_Content" class="modal_inputbox">
         </div>
 
         <div id="modal_btns">
@@ -58,23 +50,22 @@
         <%--가계부 본문--%>
     </div>
 
-    <%--모달창 시작--%>
-    <div class="modal hidden">
-        <span class="modal_title">다이어리</span>
-
-    </div>
-
 </div>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     const open = document.querySelector(".open");
-    // const close = document.querySelector(".modal__closeBtn");
-    // const modal = document.querySelector(".modal");
+    const close = document.querySelector(".modal__closeBtn");
+    const modal = document.querySelector(".modal");
 
-    modal();
-    function modal() {
+    init();
+    function init() {
         $(document).on("click", ".open", function () {
             modal.classList.remove("hidden");
+        });
+
+        close.addEventListener("click", function () {
+            modal.classList.add("hidden");
+            accreset();
         });
     }
 
@@ -105,6 +96,39 @@
         });
     }
 
+    // 등록버튼
+    $("#jsinsertBtn").on('click', function () {
+        let accNo = $("#accNo").val();
+        if (accNo != "" && accNo != null) {
+            updateDiary(accNo);
+        } else {
+            insertDiary();
+        }
+    });
+
+    // 다이어리 글 쓰기
+    function insertDiary() {
+        let Diary = {
+            "mberId": $("#modal_mberId").val(),
+            "diaryDate": $("#modal_date").val(),
+            "diaryTitle": $("#modal_Title").val(),
+            "diaryContents": $("#modal_content").val()
+        }
+        $.ajax({
+            url: "/rest/insertDiary.do",
+            type: 'post',
+            dataType: "json",
+            data: Diary,
+            success: function () {
+                start();
+                modal.classList.add("hidden");
+            },
+            error: function (textStatus) {
+                alert('실패');
+            }
+
+        })
+    }
 
 </script>
 </body>

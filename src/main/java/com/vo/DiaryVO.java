@@ -2,7 +2,7 @@ package com.vo;
 
 public class DiaryVO {
     private String diaryNo;
-    private String diaryId;
+    private String mberId;
     private String diaryDate;
     private String diaryTitle;
     private String diaryContents;
@@ -18,12 +18,12 @@ public class DiaryVO {
         this.diaryNo = diaryNo;
     }
 
-    public String getDiaryId() {
-        return diaryId;
+    public String getMberId() {
+        return mberId;
     }
 
-    public void setDiaryId(String diaryId) {
-        this.diaryId = diaryId;
+    public void setMberId(String mberId) {
+        this.mberId = mberId;
     }
 
     public String getDiaryDate() {
