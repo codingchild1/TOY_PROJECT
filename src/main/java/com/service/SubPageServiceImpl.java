@@ -34,6 +34,12 @@ public class SubPageServiceImpl implements SubPageSerivce {
         return subPageDAO.naverMber(mberVO);
     }
 
+    /**
+     *
+     * @param mberId
+     * @param password
+     * @return
+     */
     @Override
     public MberVO login(String mberId, String password) {
         MberVO user = subPageDAO.getUserById(mberId);

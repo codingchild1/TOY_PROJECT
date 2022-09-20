@@ -13,6 +13,13 @@ public class LoginRestController {
     @Autowired
     SubPageSerivce subPageSerivce;
 
+    /**
+     *
+     * @param mberId
+     * @return
+     * @throws Exception
+     */
+
     @RequestMapping("memidoverlap")
     public String memidoverlap(@RequestParam(value="mberId") String mberId) throws Exception {
         boolean overlap = false;
