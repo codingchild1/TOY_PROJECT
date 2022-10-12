@@ -21,14 +21,15 @@
         <div id="modal_inputboxid">
             <input type="date" id="modal_date" class="modal_inputbox"/>
             <input type="text" id="modal_Title" class="modal_inputbox"/>
-            <input type="text" id="modal_Content" class="modal_inputbox">
+            <input type="text" id="modal_content" class="modal_inputbox cont_textarea" />
+            <%--<textarea id="modal_Content" class="modal_inputbox cont_textarea"></textarea>--%>
         </div>
 
         <div id="modal_btns">
             <button class="modal__insertBtn" id="jsinsertBtn">등록</button>
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
         </div>
-        <input type="hidden" id="accNo"/>
+        <input type="text" id="accNo"/>
         <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
     <label for="createacc"></label>
@@ -88,7 +89,8 @@
                     str += "<h3 class='diary_box box_on diary_box_account'>" + i.amount + "</h3>";
                     str += '</div>'
                 }
-                $('#diaryList').append(str);
+                $('#diaryList').empty();    //그 전 요소들 초기화
+                $('#diaryList').append(str);    //요소추가
             },
             error: function (textStatus) {
                 alert("에러");
@@ -113,13 +115,12 @@
             "diaryDate": $("#modal_date").val(),
             "diaryTitle": $("#modal_Title").val(),
             "diaryContents": $("#modal_content").val()
-        }
+        };
         $.ajax({
             url: "/rest/insertDiary.do",
             type: 'post',
-            dataType: "json",
             data: Diary,
-            success: function () {
+            success: function (data) {
                 start();
                 modal.classList.add("hidden");
             },

@@ -58,7 +58,8 @@ a:hover {
 .menu {
     font-size: 20px;
     color: #4fc31f;
-    margin: 30px;
+    margin-right: 30px;
+    margin-left: 30px;
 }
 .logout {
     margin-right: 90px;
@@ -127,6 +128,7 @@ a:hover {
 .login {
     position: absolute;
     right: 100px;
+    list-style:none;
 }
 /*여기부터 글쓰기 모달*/
 .modal {
@@ -183,6 +185,9 @@ a:hover {
     margin: 20px 0px 0px 0px;
     border-radius: 8px;
     border: 1px solid powderblue;
+}
+.cont_textarea {
+    height: 150px;
 }
 #modal_inputboxid {
     text-align: center;

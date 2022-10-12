@@ -45,7 +45,7 @@
         left outer join
          (select *
           from sw_account
-          where acc_delete = false) as a
+          where acc_delete = false OR acc_delete = null) as a
         on a.acc_date = d.diary_date
         and a.mber_id = d.mber_id
         where d.mber_id = #{mberId}

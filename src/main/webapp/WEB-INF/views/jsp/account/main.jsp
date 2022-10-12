@@ -201,7 +201,7 @@
             "content": $("#modal_content").val(),
             "amount": $("#modal_amount").val(),
             "mberId": $("#modal_mberId").val()
-        }
+        };
         $.ajax({
             url: '/rest/insertlist',
             type: 'post',
