@@ -3,8 +3,8 @@
 <%--사이드바--%>
 <nav class="sidenav">
     <div>
-        <fmt:formatDate value="${now}" var="thisDay" pattern="yyyy-MM-dd"/> <%--2022-08--%>
-        <select id="yearBox">
+        <fmt:formatDate value="${now}" var="thisDay" pattern="yyyy-MM-dd"/> <%--2022-08-엔클라우드-%>
+        <select id="yearBox">발산역 5호선
             <c:forEach begin="${fn:substring(thisDay, 0, 4)-3}" end="${fn:substring(thisDay, 0, 4)+8}" var="year">
                 <option value="${year}" ${year == fn:substring(thisDay, 0, 4) ? 'selected' : ''}>${year}년</option>
             </c:forEach>
@@ -123,7 +123,7 @@
         $(document).on('click', ".delete-btn", function () {
             let accNo = $(this).attr('data-no');
             deleteList(accNo);
-        })
+        });
 
         close.addEventListener("click", function () {
             modal.classList.add("hidden");
@@ -205,7 +205,6 @@
         $.ajax({
             url: '/rest/insertlist',
             type: 'post',
-            dataType: "json",
             data: Account,
             success: function () {
                 getList();

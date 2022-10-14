@@ -61,6 +61,16 @@ a:hover {
     margin-right: 30px;
     margin-left: 30px;
 }
+.navDiary {
+    list-style: none;
+    line-height: 40px;
+    font-size: 20px;
+}
+.navDiary li:hover {
+    cursor: pointer;
+    margin-top: 10px;
+    color: #D65BC1;
+}
 .logout {
     margin-right: 90px;
 }

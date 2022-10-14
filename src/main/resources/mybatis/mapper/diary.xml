@@ -31,6 +31,18 @@
         <result property="accDelete" column="acc_delete"/>
     </resultMap>
 
+    <resultMap id="mberVO" type="com.vo.MberVO">
+        <result property="password" column="password"/>
+        <result property="mberNm" column="mber_nm"/>
+        <result property="email" column="email"/>
+        <result property="phoneNum" column="phone_num"/>
+        <result property="mberType" column="mber_type"/>
+        <result property="mberState" column="mber_state"/>
+        <result property="esntlId" column="esntl_id"/>
+        <result property="mberId" column="mber_id"/>
+        <result property="mberStat" column="mber_stat"/>
+    </resultMap>
+
     <select id="getDiaryList" resultMap="DiaryAcc" parameterType="com.dto.DiaryAcc">
         select sum(amount) as amount
 		, d.mber_id
@@ -84,4 +96,21 @@
 	    , #{diaryContents}
 	    )
     </insert>
+
+    <select id="selectDiaryByDiaryNo" resultMap="diaryDAO">
+        SELECT MBER_ID,
+               DIARY_DATE,
+               DIARY_TITLE,
+               DIARY_CONTENTS,
+               DIARY_NO
+        FROM SW_DIARY
+        WHERE DIARY_NO = #{diaryNo}
+    </select>
+
+    <select id="mberIdList" resultMap="mberVO">
+        SELECT MBER_ID
+        FROM SW_MBER
+        ORDER BY ESNTL_ID ASC;
+    </select>
+
 </mapper>

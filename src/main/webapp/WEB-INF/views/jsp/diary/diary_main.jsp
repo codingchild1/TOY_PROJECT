@@ -4,7 +4,11 @@
 <%--사이드바--%>
 <nav class="sidenav">
     <div>
-
+        <ul class="navDiary">
+            <c:forEach var="name" items="${mberVO}" >
+                <li><c:out value="${name.mberId}" /></li>
+            </c:forEach>
+        </ul>
     </div>
 </nav>
 <%--사이드 메뉴 끝--%>
@@ -21,7 +25,7 @@
         <div id="modal_inputboxid">
             <input type="date" id="modal_date" class="modal_inputbox"/>
             <input type="text" id="modal_Title" class="modal_inputbox"/>
-            <input type="text" id="modal_content" class="modal_inputbox cont_textarea" />
+            <input type="text" id="modal_content" class="modal_inputbox cont_textarea"/>
             <%--<textarea id="modal_Content" class="modal_inputbox cont_textarea"></textarea>--%>
         </div>
 
@@ -29,7 +33,7 @@
             <button class="modal__insertBtn" id="jsinsertBtn">등록</button>
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
         </div>
-        <input type="text" id="accNo"/>
+        <input type="hidden" id="diaryNo"/>
         <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
     <label for="createacc"></label>
@@ -57,17 +61,29 @@
     const open = document.querySelector(".open");
     const close = document.querySelector(".modal__closeBtn");
     const modal = document.querySelector(".modal");
+    const diary = document.querySelector(".test");
 
     init();
+
     function init() {
         $(document).on("click", ".open", function () {
             modal.classList.remove("hidden");
+            diaryReset();
         });
 
         close.addEventListener("click", function () {
             modal.classList.add("hidden");
-            accreset();
+            diaryReset();
         });
+
+        $(document).on("click", ".test", function () {
+            modal.classList.remove("hidden");
+            console.log($(this).attr('data-no'));
+            console.log($(this).attr('data-no'));
+            let diaryNo = $(this).attr('data-no');
+            diaryDiaryNoData(diaryNo);
+            diaryReset();
+        })
     }
 
     start();
@@ -83,7 +99,8 @@
                 for (const i of returnData) {
                     console.log()
                     j++;
-                    str += "<div class='test " +  (i % 4 === 0 ? "diary_box_on" : "box_right") + " '>";
+                    str += "<div class='test " + (i % 4 === 0 ? "diary_box_on" : "box_right") + "'" + " data-no=" + i.diaryNo + ">";
+                    // str += "<div class='test " + (i % 4 === 0 ? "diary_box_on" : "box_right") + " data-no=" + i.diaryNo + "'" + "onclick='modal.classList.remove(\"hidden\");'>";
                     str += "<h2 class='diary_box box_right'>" + i.diaryDate + "</h2>";
                     str += "<h1 class='diary_box box_right diary_box_title'>" + i.diaryTitle + "</h1>";
                     str += "<h3 class='diary_box box_on diary_box_account'>" + i.amount + "</h3>";
@@ -100,9 +117,9 @@
 
     // 등록버튼
     $("#jsinsertBtn").on('click', function () {
-        let accNo = $("#accNo").val();
-        if (accNo != "" && accNo != null) {
-            updateDiary(accNo);
+        let diaryNo = $("#diaryNo").val();
+        if (diaryNo != "" && diaryNo != null) {
+            updateDiary(diaryNo);
         } else {
             insertDiary();
         }
@@ -110,11 +127,11 @@
 
     // 다이어리 글 쓰기
     function insertDiary() {
-        let Diary = {
+        var Diary = {
             "mberId": $("#modal_mberId").val(),
             "diaryDate": $("#modal_date").val(),
             "diaryTitle": $("#modal_Title").val(),
-            "diaryContents": $("#modal_content").val()
+            "diaryContents": $("#modal_content").val(),
         };
         $.ajax({
             url: "/rest/insertDiary.do",
@@ -129,6 +146,34 @@
             }
 
         })
+    }
+
+    function diaryDiaryNoData(diaryNo) {
+        $.ajax({
+            url: '/rest/diarynodata.do',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                "diaryNo": diaryNo
+            },
+            success: function (data) {
+                $("#modal_date").val(data.diaryDate);
+                $("#modal_Title").val(data.diaryTitle);
+                $("#modal_content").val(data.diaryContents);
+                $("#diaryNo").val(diaryNo);
+            },
+            error: function (textStatus) {
+                alert("에러");
+            }
+        })
+    }
+
+    //모달폼 초기화
+    function diaryReset() {
+        $("#modal_date").val('');
+        $("#modal_Title").val('');
+        $("#modal_content").val('');
+        $("#diaryNo").val('');
     }
 
 </script>

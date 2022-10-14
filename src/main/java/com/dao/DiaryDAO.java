@@ -2,6 +2,7 @@ package com.dao;
 
 import com.dto.DiaryAcc;
 import com.vo.DiaryVO;
+import com.vo.MberVO;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.support.SqlSessionDaoSupport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,13 @@ public class DiaryDAO extends SqlSessionDaoSupport {
 
     public void insertDiary(DiaryVO diaryVO) {
         getSqlSession().insert("insertDiary", diaryVO);
+    }
+
+    public DiaryVO selectDiaryByDiaryNo(String diaryNo) throws Exception {
+        return getSqlSession().selectOne("selectDiaryByDiaryNo", diaryNo);
+    }
+
+    public List<MberVO> mberIdList(MberVO mberVO) throws Exception {
+        return getSqlSession().selectList("mberIdList", mberVO);
     }
 }

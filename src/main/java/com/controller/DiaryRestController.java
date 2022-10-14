@@ -5,6 +5,7 @@ import com.service.DiaryService;
 import com.vo.DiaryVO;
 import com.vo.MberVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -44,6 +45,18 @@ public class DiaryRestController {
         }
 
         return "";
+    }
+
+    @RequestMapping("diarynodata.do")
+    public DiaryVO diaryDiaryNoData(String diaryNo, Model model) throws Exception {
+        DiaryVO diaryVO = new DiaryVO();
+        try {
+            diaryVO = diaryService.selectDiaryByDiaryNo(diaryNo);
+            model.addAttribute("diaryNo", diaryNo);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return diaryVO;
     }
 
 }
