@@ -61,6 +61,7 @@
         on a.acc_date = d.diary_date
         and a.mber_id = d.mber_id
         where d.mber_id = #{mberId}
+        and d.diary_delete = false
         group by d.mber_id
         , d.diary_date
         , d.diary_title
@@ -89,11 +90,13 @@
 	    , diary_date
 	    , diary_title
 	    , diary_contents
+	    , diary_delete
 	    )
 	    VALUES (#{mberId}
 	    , #{diaryDate}
 	    , #{diaryTitle}
 	    , #{diaryContents}
+	    , false
 	    )
     </insert>
 

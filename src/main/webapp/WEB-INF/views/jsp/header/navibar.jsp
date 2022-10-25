@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="shortcut icon" href="#">
 </head>
+<script>
+    $(document).ready(() => {
+        document.querySelector(".modal__closeBtn").addEventListener("click", function () {
+            modal.classList.add("hidden");
+            diaryReset();
+        });
+    });
+</script>
 <body>
 <%--헤더--%>
 <nav class="nav">
@@ -58,7 +66,7 @@
             </li>
             <li class="item login">
                 <ul>
-                    <div class="menu" style="width: 70px;"><a href="#">&nbsp;&nbsp;&nbsp;${vo.mberId}</a></div>
+                    <div class="menu"><a href="#">&nbsp;&nbsp;&nbsp;${vo.mberId}</a></div>
                 </ul>
             </li>
 
