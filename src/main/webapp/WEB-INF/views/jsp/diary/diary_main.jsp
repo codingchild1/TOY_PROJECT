@@ -6,7 +6,7 @@
     <div>
         <ul class="navDiary">
             <c:forEach var="name" items="${mberVO}" >
-                <li><c:out value="${name.mberId}" /></li>
+                <li class="diaryUserList" onclick="start('${name.mberId}');"><c:out value="${name.mberId}" /></li>
             </c:forEach>
         </ul>
     </div>
@@ -28,11 +28,17 @@
             <input type="text" id="modal_content" class="modal_inputbox cont_textarea"/>
             <%--<textarea id="modal_Content" class="modal_inputbox cont_textarea"></textarea>--%>
         </div>
-
+        <%--다른 사람의 다이어리 클릭 시 수정 취소 버튼 숨김--%>
+        <%--<div>--%>
+            <%--${acc} and ${vo.mberId}--%>
+        <%--</div>--%>
+        <%--<c:if test="${acc.mberId eq vo.mberId}">--%>
         <div id="modal_btns">
             <button class="modal__insertBtn" id="jsinsertBtn">등록</button>
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
+            <button class="modal__closeBtn">확인</button>
         </div>
+        <%--</c:if>--%>
         <input type="hidden" id="diaryNo"/>
         <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
@@ -62,6 +68,7 @@
     const close = document.querySelector(".modal__closeBtn");
     const modal = document.querySelector(".modal");
     const diary = document.querySelector(".test");
+    const modalBtn = document.querySelector("#modal_btns");
 
     init();
 
@@ -81,6 +88,12 @@
             console.log($(this).attr('data-no'));
             console.log($(this).attr('data-no'));
             let diaryNo = $(this).attr('data-no');
+            let listMberId = $('#list_mber_id').val();
+            let modalMberId = $('#modal_mberId').val();
+            if (listMberId != modalMberId) {
+                modalBtn.classList.add("hidden")
+            };
+            // 세션에 있는 mberId와 글 작성자인 mberId
             diaryDiaryNoData(diaryNo);
             diaryReset();
         })
@@ -88,26 +101,30 @@
 
     start();
 
-    function start() {
+    function start(mberId) {
+        debugger;
         $.ajax({
             url: "http://localhost:8087/rest/diarylist.do",
             type: "get",
             dataType: "json",
+            data: {"mberId": mberId},
             success: function (returnData, textStatus) {
                 str = "";
                 let j = 0;
                 for (const i of returnData) {
-                    console.log()
                     j++;
                     str += "<div class='test " + (i % 4 === 0 ? "diary_box_on" : "box_right") + "'" + " data-no=" + i.diaryNo + ">";
                     // str += "<div class='test " + (i % 4 === 0 ? "diary_box_on" : "box_right") + " data-no=" + i.diaryNo + "'" + "onclick='modal.classList.remove(\"hidden\");'>";
                     str += "<h2 class='diary_box box_right'>" + i.diaryDate + "</h2>";
                     str += "<h1 class='diary_box box_right diary_box_title'>" + i.diaryTitle + "</h1>";
                     str += "<h3 class='diary_box box_on diary_box_account'>" + i.amount + "</h3>";
+                    str += "<input type='hidden' id='list_mber_id' value='" + i.mberId + "' />";
+                    // 글 작성자의 mberId 불러오기
                     str += '</div>'
                 }
                 $('#diaryList').empty();    //그 전 요소들 초기화
                 $('#diaryList').append(str);    //요소추가
+                console.log(mberId);
             },
             error: function (textStatus) {
                 alert("에러");

@@ -22,17 +22,18 @@ public class DiaryRestController {
     DiaryService diaryService;
 
     @RequestMapping("diarylist.do")
-    public List<DiaryAcc> diaryListdo(HttpSession session,  Model model, @ModelAttribute("mberId") DiaryAcc diaryAcc) throws Exception{
+    public List<DiaryAcc> diaryListdo(HttpSession session, Model model, @ModelAttribute("mberId") DiaryAcc diaryAcc, String diaryNo) throws Exception{
         List<DiaryAcc> diaryList = new ArrayList<>();
+        DiaryVO diaryVO = new DiaryVO();
 
         try {
             if (diaryAcc.getMberId() == null) {
                 MberVO mberVO = (MberVO) session.getAttribute("vo");    // 세션에 저장 되어있는 vo 정보 받아서 객체에 삽입
                 diaryAcc.setMberId(mberVO.getMberId()); // dto 에 필요한 값 (아이디) 넣어주기
             }
-            String acc = diaryAcc.getMberId();
             diaryList = diaryService.diaryList(diaryAcc);
-            model.addAttribute("acc", acc);
+//            diaryVO = diaryService.selectDiaryByDiaryNo(diaryNo);
+            model.addAttribute("acc", diaryVO);
 
         } catch (Exception e) {
             e.printStackTrace();
