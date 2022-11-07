@@ -69,7 +69,6 @@
     const modal = document.querySelector(".modal");
     const diary = document.querySelector(".test");
     const modalBtn = document.querySelector("#modal_btns");
-
     init();
 
     function init() {
