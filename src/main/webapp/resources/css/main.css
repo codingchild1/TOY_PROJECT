@@ -169,6 +169,21 @@ a:hover {
     cursor: pointer;
     margin-left: 70px;
 }
+.modal__okBtn {
+    background-color: #ece6cc;
+    border: none;
+    position: absolute;
+    top: 420px;
+    height: 40px;
+    width: 60px;
+    border-radius: 8px;
+    text-align: center;
+    font-family: 'MYYeongnamnu';
+    font-size: 19px;
+    color: white;
+    cursor: pointer;
+    margin-left: 70px;
+}
 #jsinsertBtn {
     background-color: whitesmoke;
     border: none;
@@ -185,6 +200,9 @@ a:hover {
 }
 #modal_btns {
     margin-left: 185px;
+}
+.modal__okBtn {
+    margin-left: 215px;
 }
 .hidden {
     display: none;

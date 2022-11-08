@@ -36,9 +36,9 @@
         <div id="modal_btns">
             <button class="modal__insertBtn" id="jsinsertBtn">등록</button>
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
-            <button class="modal__closeBtn">확인</button>
         </div>
-        <%--</c:if>--%>
+        <button class="modal__okBtn">확인</button>
+    <%--</c:if>--%>
         <input type="hidden" id="diaryNo"/>
         <input type="hidden" id="modal_mberId" value="${vo.mberId}"/>
     </div>
@@ -69,6 +69,8 @@
     const modal = document.querySelector(".modal");
     const diary = document.querySelector(".test");
     const modalBtn = document.querySelector("#modal_btns");
+    const okBtn = document.querySelector(".modal__okBtn");
+
     init();
 
     function init() {
@@ -78,6 +80,15 @@
         });
 
         close.addEventListener("click", function () {
+            modalBtn.classList.remove("hidden");
+            okBtn.classList.remove("hidden");
+            modal.classList.add("hidden");
+            diaryReset();
+        });
+
+        okBtn.addEventListener("click", function () {
+            modalBtn.classList.remove("hidden");
+            okBtn.classList.remove("hidden");
             modal.classList.add("hidden");
             diaryReset();
         });
@@ -89,8 +100,12 @@
             let diaryNo = $(this).attr('data-no');
             let listMberId = $('#list_mber_id').val();
             let modalMberId = $('#modal_mberId').val();
+            // 로그인 아이디와 글 작성자의 아이디가 다를경우 수정 취소 버튼 hidden
             if (listMberId != modalMberId) {
                 modalBtn.classList.add("hidden")
+            };
+            if (listMberId == modalMberId) {
+                okBtn.classList.add("hidden")
             };
             // 세션에 있는 mberId와 글 작성자인 mberId
             diaryDiaryNoData(diaryNo);
@@ -101,7 +116,6 @@
     start();
 
     function start(mberId) {
-        debugger;
         $.ajax({
             url: "http://localhost:8087/rest/diarylist.do",
             type: "get",
