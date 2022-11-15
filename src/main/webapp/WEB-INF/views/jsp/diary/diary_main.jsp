@@ -33,6 +33,9 @@
             <%--${acc} and ${vo.mberId}--%>
         <%--</div>--%>
         <%--<c:if test="${acc.mberId eq vo.mberId}">--%>
+        <input type="checkbox" name="secretBtn" class="secretBtn" id="secretBtn"/>
+        <%--<input type="hidden" name="secretBtn" class="secretBtn" id="secretBtn_hidden" value="true"/>--%>
+        <span class="secretWriting">비밀글</span>
         <div id="modal_btns">
             <button class="modal__insertBtn" id="jsinsertBtn">등록</button>
             <button class="modal__closeBtn" id="jsCloseBtn">취소</button>
@@ -76,6 +79,7 @@
     function init() {
         $(document).on("click", ".open", function () {
             modal.classList.remove("hidden");
+            okBtn.classList.add("hidden");
             diaryReset();
         });
 
@@ -157,11 +161,17 @@
 
     // 다이어리 글 쓰기
     function insertDiary() {
+            if($("#secretBtn").prop("checked")){
+                $("#secretBtn").val("true");
+            }else{
+                $("#secretBtn").val("false");
+            }
         var Diary = {
             "mberId": $("#modal_mberId").val(),
             "diaryDate": $("#modal_date").val(),
             "diaryTitle": $("#modal_Title").val(),
             "diaryContents": $("#modal_content").val(),
+            "secretBtn": $("#secretBtn").val()
         };
         $.ajax({
             url: "/rest/insertDiary.do",
@@ -173,9 +183,9 @@
             },
             error: function (textStatus) {
                 alert('실패');
-            }
-
+            },
         })
+        diaryReset();
     }
 
     function diaryDiaryNoData(diaryNo) {

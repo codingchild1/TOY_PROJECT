@@ -29,6 +29,7 @@
         <result property="allAmount" column="all_amount"/>
         <result property="accNo" column="acc_no"/>
         <result property="accDelete" column="acc_delete"/>
+        <result property="secretBtn" column="diary_secret"/>
     </resultMap>
 
     <resultMap id="mberVO" type="com.vo.MberVO">
@@ -53,6 +54,7 @@
         , d.diary_delete
         , d.images
         , d.diary_no
+        , d.diary_secret
         from sw_diary as d
         left outer join
          (select *
@@ -62,6 +64,7 @@
         and a.mber_id = d.mber_id
         where d.mber_id = #{mberId}
         and d.diary_delete = false
+        and d.diary_secret = 'false'
         group by d.mber_id
         , d.diary_date
         , d.diary_title
@@ -70,6 +73,7 @@
         , d.diary_delete
         , d.images
         , d.diary_no
+        , d.diary_secret
 		order by d.diary_date desc;
     </select>
 
@@ -91,12 +95,14 @@
 	    , diary_title
 	    , diary_contents
 	    , diary_delete
+	    , diary_secret
 	    )
 	    VALUES (#{mberId}
 	    , #{diaryDate}
 	    , #{diaryTitle}
 	    , #{diaryContents}
 	    , false
+	    , #{secretBtn}
 	    )
     </insert>
 

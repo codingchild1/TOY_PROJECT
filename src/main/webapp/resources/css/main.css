@@ -312,4 +312,19 @@ a:hover {
 .diary_box_account {
     margin-top: 160px;
 }
+
+.secretBtn {
+    position: absolute;
+    margin-top: 52px;
+    right: 100px;
+}
+
+.secretWriting {
+    position: absolute;
+    right: 65px;
+    font-size: 13px;
+    margin-top: 50px;
+    font-family: 'MYYeongnamnu';
+    color: gray;
+}
 /*다이어리 끝*/
