@@ -1,5 +1,7 @@
 package com.dto;
 
+import com.vo.DiaryVO;
+import com.vo.MberVO;
 import lombok.Data;
 
 @Data
@@ -14,4 +16,6 @@ public class DiaryAcc {
     private String images;
     private int amount;
     private String secretBtn;
+    private MberVO mberVO;
+    private DiaryVO diaryVO;
 }

@@ -64,7 +64,10 @@
         and a.mber_id = d.mber_id
         where d.mber_id = #{mberId}
         and d.diary_delete = false
+        <if test="mberId != mberVO.getMberId()">
         and d.diary_secret = 'false'
+        </if>
+--         비밀글 본인한테만 보이기
         group by d.mber_id
         , d.diary_date
         , d.diary_title
