@@ -77,7 +77,8 @@
         , d.images
         , d.diary_no
         , d.diary_secret
-		order by d.diary_date desc;
+		order by d.diary_date desc
+        limit 8;
     </select>
 
     <!--총 금액 join-->

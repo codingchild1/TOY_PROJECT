@@ -4,6 +4,27 @@
     font-weight: normal;
     font-style: normal;
 }
+@font-face {
+    font-family: 'Herr Von Muellerhoff';
+    font-style: normal;
+    font-weight: 300;
+    font-size: 46px;
+    color: #cccccc;
+    line-height: 1.4;
+    src:url("/resources/css/HerrVonMuellerhoff-Regular.ttf");
+}
+/*----------------------------------foter----------------------------------*/
+.site-footer {
+    padding:2em 0;
+    text-align:center;
+    background-color:#333;
+    color:#999;
+}
+.site-footer a {
+    text-decoration:none;
+    color: #999;
+}
+/*----------------------------------foter----------------------------------*/
 
 body {
     margin: 0;
@@ -29,6 +50,20 @@ a:hover {
     background: #F8F8FF;
     box-shadow: 2px -2px 5px 0px black;
     font-family: 'MYYeongnamnu';
+}
+#logo {
+    position: absolute;
+    font-size: 40px;
+    font-weight: 500;
+    left: 150px;
+    color: #222222;
+    font-style: normal;
+    letter-spacing: 2px;
+    text-transform: none;
+    top: 30px;
+}
+#logo a {
+    color: #222222;
 }
 
 .sidenav {
@@ -81,6 +116,8 @@ a:hover {
     /* width: auto; */
     /* height: auto; */
     position: absolute;
+    height : auto;
+    min-height: 100%;
 }
 
 .acctable {
@@ -328,3 +365,41 @@ a:hover {
     color: gray;
 }
 /*다이어리 끝*/
+
+/*===================index===================*/
+.site-content {
+    overflow: hidden;
+    width: 1200px;
+    min-height: 280px;
+    margin: 0 auto;
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+.two-thirds {
+    width: 66.7%;
+    margin-bottom: 0px;
+    float: left;
+    padding: 0px 15px;
+    font-family: inherit;
+    vertical-align: baseline;
+}
+.entry-title a:hover {
+    color: #ccc !important;
+}
+.entry-title a {
+    color: #222222;
+}
+.bloggrid {
+    position: relative;
+    height: 1134.8px;
+}
+.entry-meta {
+    font-size: 14px;
+}
+.entry-summary {
+    font-size: 15px;
+}
+.entry-footer {
+    font-size: 14px;
+}
+/*===================index===================*/

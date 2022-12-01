@@ -95,6 +95,7 @@
         </tbody>
     </table>
 </div>
+<%@ include file="/WEB-INF/views/jsp/header/footer.jsp" %>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
     // const open = document.querySelector(".open");

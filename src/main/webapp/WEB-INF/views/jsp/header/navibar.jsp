@@ -8,6 +8,10 @@
     <title>마이 가계부</title>
     <link rel="stylesheet" href="/resources/css/main.css">
     <link rel="shortcut icon" href="#">
+    <%--<!-- 제이쿼리 -->--%>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous" type="text/javascript"></script>--%>
+    <%--<!-- chart.js -->--%>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>--%>
 </head>
 <script>
     $(document).ready(() => {
@@ -17,9 +21,14 @@
         });
     });
 </script>
-<body>
+<body style="cursor: url(https://cur.cursors-4u.net/cursors/cur-2/cur116.cur), auto !important;">
 <%--헤더--%>
 <nav class="nav">
+    <li>
+        <ul>
+            <div id="logo" style="font-family: Herr Von Muellerhoff;"><a href="main">Diccount</a></div>
+        </ul>
+    </li>
     <li class="item">
         <ul>
             <div class="menu"><a href="main">Home</a></div>
@@ -32,17 +41,17 @@
     </li>
     <li class="item">
         <ul>
-            <div class="menu"><a href="main">account</a></div>
+            <div class="menu"><a href="account">Account</a></div>
         </ul>
     </li>
     <li class="item">
         <ul>
-            <div class="menu"><a href="#">미구현1</a></div>
+            <div class="menu"><a href="trends">Trends</a></div>
         </ul>
     </li>
     <li class="item">
         <ul>
-            <div class="menu"><a href="#">미구현2</a></div>
+            <div class="menu"><a href="#">Shop</a></div>
         </ul>
     </li>
     <li class="item">

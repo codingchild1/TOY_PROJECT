@@ -33,6 +33,7 @@
         AND ACC_DELETE = FALSE
         AND mber_id = #{mberVO.mberId}
         ORDER BY ACC_DATE desc
+        limit 25
     </select>
 
     <insert id="insertaccount" parameterType="com.vo.AccountVO">

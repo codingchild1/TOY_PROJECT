@@ -93,7 +93,7 @@ public class LoginController {
             session.setAttribute("vo", user);
 
 
-        return "redirect:/sw/main";
+        return "redirect:/sw/account";
     }
 
     @RequestMapping("logout.do")
@@ -114,7 +114,7 @@ public class LoginController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return "jsp/account/main";
+        return "jsp/account/account";
     }
 
 }
